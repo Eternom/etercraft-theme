@@ -27,12 +27,8 @@
     --ec-ease: cubic-bezier(.22, 1, .36, 1);
 }
 
-html,
 body {
-    min-height: 100%;
-}
-
-body {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     background:
@@ -108,13 +104,14 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Pages hors accueil : la navigation fixe ne recouvre pas le haut de la page */
-.page-header {
-    padding: 8rem 0 2.5rem;
+.page-content {
+    padding-top: 7.5rem;
 }
 
-.page-title {
+/* Les pages d'Azuriom et des plugins portent leur propre titre : on le met en valeur */
+.page-content > h1:first-of-type {
     font-size: clamp(2.25rem, 5vw, 3.25rem);
-    margin: 0;
+    margin-bottom: 2rem;
 }
 
 /* ---------- Composants ---------- */
@@ -223,6 +220,13 @@ a.glass-card:hover,
 
 .table {
     --bs-table-bg: transparent;
+    --bs-table-border-color: var(--ec-glass-border);
+}
+
+.table-dark,
+.table > thead {
+    --bs-table-color: var(--bs-emphasis-color);
+    --bs-table-bg: rgba(var(--bs-primary-rgb), .08);
     --bs-table-border-color: var(--ec-glass-border);
 }
 
