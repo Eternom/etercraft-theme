@@ -101,6 +101,15 @@
                             <label class="form-check-label" for="show_featuresSwitch">{{ trans('theme::messages.config.show_features') }}</label>
                         </div>
 
+                        <div class="mt-3">
+                            <label class="form-label" for="featuresLayoutSelect">{{ trans('theme::messages.config.features_layout') }}</label>
+                            <select class="form-select" id="featuresLayoutSelect" name="features_layout">
+                                @foreach(['list', 'bento', 'showcase'] as $layout)
+                                    <option value="{{ $layout }}" @selected(old('features_layout', config('theme.features_layout', 'list')) === $layout)>{{ trans('theme::messages.config.layouts.'.$layout) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="row g-3 mt-1">
                             <div class="mb-3 col-md-5">
                                 <label class="form-label" for="featuresTitleInput">{{ trans('theme::messages.config.section_title') }}</label>

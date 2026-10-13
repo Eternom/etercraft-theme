@@ -24,6 +24,12 @@ return [
         'section_title' => 'Titre de la section',
         'section_subtitle' => 'Sous-titre de la section',
         'features' => 'Section « Ce qui t\'attend »',
+        'features_layout' => 'Disposition',
+        'layouts' => [
+            'list' => 'Éditoriale : titre fixe à gauche, liste numérotée',
+            'bento' => 'Mosaïque : une grande carte mise en avant, halo au survol',
+            'showcase' => 'Vitrine : titres à gauche, l\'élément survolé en grand à droite',
+        ],
         'features_items' => 'Cartes',
         'features_info' => 'Icône : un nom de la bibliothèque Bootstrap Icons (ex. hammer, trophy, shield). 9 cartes au plus.',
         'icons_link' => 'Voir les icônes',

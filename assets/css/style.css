@@ -538,6 +538,232 @@ a.glass-card:hover {
     }
 }
 
+/* « Ce qui t'attend », disposition mosaïque : première carte en grand, halo qui suit la souris */
+.bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.bento-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5rem;
+    padding: 2rem;
+    border-radius: 1.25rem;
+    background: var(--ec-glass);
+    border: 1px solid var(--ec-glass-border);
+    transition: border-color .4s var(--ec-ease), transform .5s var(--ec-ease);
+}
+
+.bento-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(28rem circle at var(--x, 50%) var(--y, 50%), rgba(var(--bs-primary-rgb), .14), transparent 45%);
+    opacity: 0;
+    transition: opacity .4s var(--ec-ease);
+}
+
+.bento-card:hover {
+    border-color: rgba(var(--bs-primary-rgb), .3);
+    transform: translateY(-3px);
+}
+
+.bento-card:hover::before {
+    opacity: 1;
+}
+
+.bento-card h3 {
+    font-size: 1.3rem;
+    margin: 0 0 .5rem;
+}
+
+.bento-card p {
+    color: var(--bs-secondary-color);
+    margin: 0;
+}
+
+.bento-glyph {
+    font-size: 1.75rem;
+    color: var(--bs-primary);
+}
+
+.bento-card-lead {
+    grid-column: span 2;
+    grid-row: span 2;
+    min-height: 24rem;
+    background:
+        radial-gradient(ellipse at 100% 0%, rgba(var(--bs-primary-rgb), .16), transparent 60%),
+        var(--ec-glass);
+}
+
+.bento-card-lead h3 {
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+}
+
+.bento-card-lead p {
+    font-size: 1.1rem;
+    max-width: 30rem;
+}
+
+.bento-card-lead .bento-glyph {
+    font-size: 4.5rem;
+    line-height: 1;
+}
+
+@media (max-width: 991.98px) {
+    .bento {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bento-card-lead {
+        grid-row: auto;
+        min-height: 0;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .bento {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-card-lead {
+        grid-column: auto;
+    }
+}
+
+/* « Ce qui t'attend », disposition vitrine : titres à gauche, grand panneau à droite */
+.showcase-title {
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+    line-height: 1.05;
+    margin: .75rem 0 1rem;
+}
+
+.showcase-tabs {
+    border-bottom: 1px solid var(--ec-glass-border);
+}
+
+.showcase-tab {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    align-items: center;
+    width: 100%;
+    padding: 1.15rem 0;
+    text-align: left;
+    color: var(--bs-secondary-color);
+    background: none;
+    border: 0;
+    border-top: 1px solid var(--ec-glass-border);
+}
+
+/* Trait de la couleur du thème qui se déploie sur l'élément actif */
+.showcase-tab::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--bs-primary);
+    transition: width .6s var(--ec-ease);
+}
+
+.showcase-name {
+    font-family: var(--ec-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    transition: color .3s var(--ec-ease);
+}
+
+.showcase-arrow {
+    color: var(--bs-primary);
+    opacity: 0;
+    transform: translateX(-.5rem);
+    transition: opacity .3s var(--ec-ease), transform .4s var(--ec-ease);
+}
+
+.showcase-text {
+    grid-column: 2 / -1;
+    margin-top: .4rem;
+}
+
+.showcase-tab:hover .showcase-name,
+.showcase-tab.active .showcase-name {
+    color: var(--bs-emphasis-color);
+}
+
+.showcase-tab.active::before {
+    width: 100%;
+}
+
+.showcase-tab.active .feature-index {
+    color: var(--bs-primary);
+}
+
+.showcase-tab.active .showcase-arrow {
+    opacity: 1;
+    transform: none;
+}
+
+.showcase-stage {
+    position: relative;
+    min-height: 28rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--ec-glass-border);
+    background:
+        radial-gradient(ellipse at 80% 15%, rgba(var(--bs-primary-rgb), .2), transparent 55%),
+        radial-gradient(ellipse at 10% 100%, rgba(255, 179, 71, .08), transparent 50%),
+        var(--ec-glass);
+}
+
+.showcase-panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+    opacity: 0;
+    transform: translateY(1rem);
+    pointer-events: none;
+    transition: opacity .5s var(--ec-ease), transform .6s var(--ec-ease);
+}
+
+.showcase-panel.active {
+    opacity: 1;
+    transform: none;
+}
+
+.showcase-panel h3 {
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    margin: .5rem 0 .75rem;
+}
+
+.showcase-panel p {
+    color: var(--bs-secondary-color);
+    font-size: 1.1rem;
+    max-width: 30rem;
+    margin: 0;
+}
+
+.showcase-glyph {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 7rem;
+    line-height: 1;
+    color: var(--bs-primary);
+    filter: drop-shadow(0 0 2.5rem rgba(var(--bs-primary-rgb), .45));
+}
+
 .step-card {
     position: relative;
     overflow: hidden;

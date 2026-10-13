@@ -7,6 +7,7 @@ return [
     'subtitle' => ['nullable', 'string', 'max:300'],
     'background_pages' => ['boolean'],
     'show_features' => ['boolean'],
+    'features_layout' => ['nullable', 'in:list,bento,showcase'],
     'features_title' => ['nullable', 'string', 'max:80'],
     'features_subtitle' => ['nullable', 'string', 'max:200'],
     'features' => ['nullable', 'array', 'max:9'],

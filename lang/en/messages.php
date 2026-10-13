@@ -24,6 +24,12 @@ return [
         'section_title' => 'Section title',
         'section_subtitle' => 'Section subtitle',
         'features' => '"What awaits you" section',
+        'features_layout' => 'Layout',
+        'layouts' => [
+            'list' => 'Editorial: sticky title on the left, numbered list',
+            'bento' => 'Bento: one large featured card, glow on hover',
+            'showcase' => 'Showcase: titles on the left, the hovered item large on the right',
+        ],
         'features_items' => 'Cards',
         'features_info' => 'Icon: a name from the Bootstrap Icons library (e.g. hammer, trophy, shield). 9 cards at most.',
         'icons_link' => 'Browse icons',

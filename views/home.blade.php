@@ -75,34 +75,15 @@
     </div>
 
     @if(config('theme.show_features', true))
-    <section id="features" class="section">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="features-intro" data-reveal>
-                        <span class="eyebrow">{{ site_name() }}</span>
-                        <h2>{{ config('theme.features_title') ?: trans('theme::messages.features.title') }}</h2>
-                        <p>{{ config('theme.features_subtitle') ?: trans('theme::messages.features.subtitle') }}</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-8">
-                    <ol class="feature-list">
-                        @foreach(array_values($features) as $index => $feature)
-                            <li class="feature-row" data-reveal>
-                                <span class="feature-index">{{ sprintf('%02d', $index + 1) }}</span>
-                                <div>
-                                    <h3>{{ $feature['title'] }}</h3>
-                                    <p>{{ $feature['text'] }}</p>
-                                </div>
-                                <i class="bi bi-{{ Str::after($feature['icon'], 'bi-') }} feature-glyph" aria-hidden="true"></i>
-                            </li>
-                        @endforeach
-                    </ol>
-                </div>
+        <section id="features" class="section">
+            <div class="container">
+                @include('elements.features.'.(in_array(config('theme.features_layout'), ['bento', 'showcase'], true) ? config('theme.features_layout') : 'list'), [
+                    'title' => config('theme.features_title') ?: trans('theme::messages.features.title'),
+                    'subtitle' => config('theme.features_subtitle') ?: trans('theme::messages.features.subtitle'),
+                    'features' => array_values($features),
+                ])
             </div>
-        </div>
-    </section>
+        </section>
     @endif
 
     @if(config('theme.show_join', true))
