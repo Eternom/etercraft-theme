@@ -16,7 +16,7 @@ Tout se règle depuis l'administration, sans toucher au code.
   | Plugin | Section d'accueil | Page habillée |
   |---|---|---|
   | Vote | Podium des meilleurs voteurs du mois | Sites de vote, podium, objectif, récompenses |
-  | Shop | Articles mis en avant | Accueil, barre latérale et grille d'articles des catégories |
+  | Shop | Articles mis en avant | Accueil, barre latérale, grille d'articles et panier |
   | Wiki | Catégories et recherche | Accueil du wiki et en-tête des pages |
   | Forum | Discussions récentes | Style du thème (composants Bootstrap) |
 
