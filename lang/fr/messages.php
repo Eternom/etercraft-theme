@@ -7,7 +7,7 @@ return [
         'azuriom_social' => 'Réseaux sociaux',
         'tabs' => [
             'home' => 'Accueil',
-            'features' => 'Ce qui t\x27attend',
+            'features' => 'Ce qui t\'attend',
             'join' => 'Rejoindre',
             'footer' => 'Pied de page',
         ],
