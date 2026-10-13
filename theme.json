@@ -1,0 +1,11 @@
+{
+    "id": "etercraft",
+    "name": "EterCraft",
+    "version": "1.0.0",
+    "description": "Thème sombre et moderne du serveur EterCraft.",
+    "url": "https://craft.eternom.fr",
+    "authors": [
+        "NadTum"
+    ],
+    "azuriom_api": "1.2.0"
+}
