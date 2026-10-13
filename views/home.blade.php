@@ -3,14 +3,9 @@
 @section('title', trans('messages.home'))
 
 @php
-    $features = [
-        ['icon' => 'bi-hammer', 'key' => 'jobs'],
-        ['icon' => 'bi-flag', 'key' => 'clans'],
-        ['icon' => 'bi-stars', 'key' => 'pass'],
-        ['icon' => 'bi-award', 'key' => 'success'],
-        ['icon' => 'bi-globe2', 'key' => 'resource'],
-        ['icon' => 'bi-trophy', 'key' => 'rankings'],
-    ];
+    // Contenu des sections : celui de la config du thème, sinon le texte par défaut du fichier de langue
+    $features = config('theme.features') ?: trans('theme::messages.features.items');
+    $joinSteps = config('theme.join_steps') ?: trans('theme::messages.join.steps');
     // Discord vient des réseaux sociaux d'Azuriom : un seul endroit pour le régler
     $discord = social_links()->firstWhere('type', 'discord');
 @endphp
@@ -83,18 +78,17 @@
     <section id="features" class="section">
         <div class="container">
             <div class="section-head text-center" data-reveal>
-                <h2>{{ trans('theme::messages.features.title') }}</h2>
-                <p>{{ trans('theme::messages.features.subtitle') }}</p>
+                <h2>{{ config('theme.features_title') ?: trans('theme::messages.features.title') }}</h2>
+                <p>{{ config('theme.features_subtitle') ?: trans('theme::messages.features.subtitle') }}</p>
             </div>
 
             <div class="row g-4">
                 @foreach($features as $feature)
-                    @php([$title, $text] = trans('theme::messages.features.'.$feature['key']))
                     <div class="col-md-6 col-lg-4" data-reveal>
                         <article class="glass-card feature-card h-100">
-                            <span class="feature-icon"><i class="bi {{ $feature['icon'] }}"></i></span>
-                            <h3>{{ $title }}</h3>
-                            <p>{{ $text }}</p>
+                            <span class="feature-icon"><i class="bi bi-{{ Str::after($feature['icon'], 'bi-') }}"></i></span>
+                            <h3>{{ $feature['title'] }}</h3>
+                            <p>{{ $feature['text'] }}</p>
                         </article>
                     </div>
                 @endforeach
@@ -107,16 +101,16 @@
     <section class="section">
         <div class="container">
             <div class="section-head text-center" data-reveal>
-                <h2>{{ trans('theme::messages.join.title') }}</h2>
+                <h2>{{ config('theme.join_title') ?: trans('theme::messages.join.title') }}</h2>
             </div>
 
             <div class="row g-4">
-                @foreach(trans('theme::messages.join.steps') as $index => [$title, $text])
+                @foreach(array_values($joinSteps) as $index => $step)
                     <div class="col-md-4" data-reveal>
                         <div class="glass-card step-card h-100">
                             <span class="step-number">{{ $index + 1 }}</span>
-                            <h3>{{ $title }}</h3>
-                            <p>{{ $text }}</p>
+                            <h3>{{ $step['title'] }}</h3>
+                            <p>{{ $step['text'] }}</p>
                         </div>
                     </div>
                 @endforeach
