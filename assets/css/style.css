@@ -152,8 +152,7 @@ h1, h2, h3, h4, h5, h6,
     transition: transform .4s var(--ec-ease), border-color .4s var(--ec-ease), background-color .4s var(--ec-ease);
 }
 
-a.glass-card:hover,
-.feature-card:hover {
+a.glass-card:hover {
     transform: translateY(-4px);
     border-color: rgba(var(--bs-primary-rgb), .35);
     background: rgba(255, 255, 255, .05);
@@ -403,34 +402,140 @@ a.glass-card:hover,
     margin: .75rem 0 0;
 }
 
-.feature-card,
 .step-card {
     padding: 2rem;
 }
 
-.feature-card h3,
 .step-card h3 {
     font-size: 1.3rem;
     margin: 1.25rem 0 .5rem;
 }
 
-.feature-card p,
 .step-card p {
     color: var(--bs-secondary-color);
     margin: 0;
 }
 
-.feature-icon {
+/* « Ce qui t'attend » : liste éditoriale numérotée, titre de section fixe à gauche */
+.features-intro {
+    position: sticky;
+    top: 7rem;
+}
+
+.features-intro h2 {
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+    line-height: 1.05;
+    margin: .75rem 0 1rem;
+}
+
+.features-intro p {
+    color: var(--bs-secondary-color);
+    max-width: 22rem;
+    margin: 0;
+}
+
+.eyebrow {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: .9rem;
-    font-size: 1.35rem;
+    gap: .6rem;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
     color: var(--bs-primary);
-    background: rgba(var(--bs-primary-rgb), .12);
-    border: 1px solid rgba(var(--bs-primary-rgb), .2);
+}
+
+.eyebrow::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.feature-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--ec-glass-border);
+}
+
+.feature-row {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--ec-glass-border);
+    overflow: hidden;
+}
+
+/* Au survol, un voile de la couleur du thème glisse depuis la gauche */
+.feature-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(var(--bs-primary-rgb), .1), transparent 70%);
+    transform: translateX(-100%);
+    transition: transform .6s var(--ec-ease);
+}
+
+.feature-row:hover::before {
+    transform: none;
+}
+
+.feature-index {
+    align-self: start;
+    padding-top: .35rem;
+    font-family: var(--ec-display);
+    font-size: .95rem;
+    letter-spacing: .1em;
+    color: var(--bs-secondary-color);
+    transition: color .4s var(--ec-ease);
+}
+
+.feature-row h3 {
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    margin: 0 0 .4rem;
+    transition: transform .5s var(--ec-ease);
+}
+
+.feature-row p {
+    color: var(--bs-secondary-color);
+    max-width: 34rem;
+    margin: 0;
+}
+
+.feature-glyph {
+    font-size: 2.25rem;
+    color: rgba(255, 255, 255, .14);
+    transition: color .4s var(--ec-ease), transform .5s var(--ec-ease);
+}
+
+.feature-row:hover .feature-index,
+.feature-row:hover .feature-glyph {
+    color: var(--bs-primary);
+}
+
+.feature-row:hover h3 {
+    transform: translateX(.35rem);
+}
+
+.feature-row:hover .feature-glyph {
+    transform: scale(1.1) rotate(-6deg);
+}
+
+@media (max-width: 575.98px) {
+    .feature-row {
+        grid-template-columns: 2.5rem 1fr;
+        padding: 1.5rem .5rem;
+    }
+
+    .feature-glyph {
+        display: none;
+    }
 }
 
 .step-card {

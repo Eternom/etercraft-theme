@@ -77,21 +77,29 @@
     @if(config('theme.show_features', true))
     <section id="features" class="section">
         <div class="container">
-            <div class="section-head text-center" data-reveal>
-                <h2>{{ config('theme.features_title') ?: trans('theme::messages.features.title') }}</h2>
-                <p>{{ config('theme.features_subtitle') ?: trans('theme::messages.features.subtitle') }}</p>
-            </div>
-
-            <div class="row g-4">
-                @foreach($features as $feature)
-                    <div class="col-md-6 col-lg-4" data-reveal>
-                        <article class="glass-card feature-card h-100">
-                            <span class="feature-icon"><i class="bi bi-{{ Str::after($feature['icon'], 'bi-') }}"></i></span>
-                            <h3>{{ $feature['title'] }}</h3>
-                            <p>{{ $feature['text'] }}</p>
-                        </article>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="features-intro" data-reveal>
+                        <span class="eyebrow">{{ site_name() }}</span>
+                        <h2>{{ config('theme.features_title') ?: trans('theme::messages.features.title') }}</h2>
+                        <p>{{ config('theme.features_subtitle') ?: trans('theme::messages.features.subtitle') }}</p>
                     </div>
-                @endforeach
+                </div>
+
+                <div class="col-lg-8">
+                    <ol class="feature-list">
+                        @foreach(array_values($features) as $index => $feature)
+                            <li class="feature-row" data-reveal>
+                                <span class="feature-index">{{ sprintf('%02d', $index + 1) }}</span>
+                                <div>
+                                    <h3>{{ $feature['title'] }}</h3>
+                                    <p>{{ $feature['text'] }}</p>
+                                </div>
+                                <i class="bi bi-{{ Str::after($feature['icon'], 'bi-') }} feature-glyph" aria-hidden="true"></i>
+                            </li>
+                        @endforeach
+                    </ol>
+                </div>
             </div>
         </div>
     </section>
