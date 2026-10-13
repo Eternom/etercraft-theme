@@ -145,6 +145,7 @@ return [
         'subtitle' => 'Les dernières discussions de la communauté.',
         'see_all' => 'Aller au forum',
         'replies' => ':count réponse|:count réponses',
+        'empty' => 'Aucune discussion pour l\'instant : lance la première !',
     ],
     'footer' => [
         'tagline' => 'Serveur Minecraft : rejoins-nous et joue avec la communauté.',

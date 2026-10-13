@@ -145,6 +145,7 @@ return [
         'subtitle' => 'The latest community discussions.',
         'see_all' => 'Go to the forum',
         'replies' => ':count reply|:count replies',
+        'empty' => 'No discussion yet: start the first one!',
     ],
     'footer' => [
         'tagline' => 'Minecraft server: join us and play with the community.',

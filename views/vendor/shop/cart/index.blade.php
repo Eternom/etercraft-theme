@@ -10,7 +10,7 @@
     <h1>{{ trans('shop::messages.cart.title') }}</h1>
 
     @if($cart->isEmpty())
-        <div class="glass-card cart-empty">
+        <div class="glass-card empty-state">
             <i class="bi bi-cart" aria-hidden="true"></i>
             <p>{{ trans('shop::messages.cart.empty') }}</p>
             <a href="{{ route('shop.home') }}" class="btn btn-primary">

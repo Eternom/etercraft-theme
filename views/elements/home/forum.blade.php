@@ -11,20 +11,27 @@
             ->get();
     @endphp
 
-    @unless($discussions->isEmpty())
-        <section id="forum" class="section">
-            <div class="container">
-                <div class="section-head-split" data-reveal>
-                    <div>
-                        <span class="eyebrow">{{ site_name() }}</span>
-                        <h2>{{ config('theme.forum_title') ?: trans('theme::messages.forum.title') }}</h2>
-                        <p>{{ trans('theme::messages.forum.subtitle') }}</p>
-                    </div>
-                    <a href="{{ route('forum.home') }}" class="btn btn-glass">
-                        {{ trans('theme::messages.forum.see_all') }} <i class="bi bi-arrow-right"></i>
-                    </a>
+    <section id="forum" class="section">
+        <div class="container">
+            <div class="section-head-split" data-reveal>
+                <div>
+                    <span class="eyebrow">{{ site_name() }}</span>
+                    <h2>{{ config('theme.forum_title') ?: trans('theme::messages.forum.title') }}</h2>
+                    <p>{{ trans('theme::messages.forum.subtitle') }}</p>
                 </div>
+                <a href="{{ route('forum.home') }}" class="btn btn-glass">
+                    {{ trans('theme::messages.forum.see_all') }} <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
 
+            @if($discussions->isEmpty())
+                {{-- Forum tout neuf : on invite à lancer la première discussion plutôt que de masquer la section --}}
+                <div class="glass-card empty-state" data-reveal>
+                    <i class="bi bi-chat-square-text" aria-hidden="true"></i>
+                    <p>{{ trans('theme::messages.forum.empty') }}</p>
+                    <a href="{{ route('forum.home') }}" class="btn btn-primary">{{ trans('theme::messages.forum.see_all') }}</a>
+                </div>
+            @else
                 <div class="forum-feed">
                     @foreach($discussions as $discussion)
                         <a href="{{ route('forum.discussions.show', $discussion) }}" class="forum-feed-item" data-reveal>
@@ -42,7 +49,7 @@
                         </a>
                     @endforeach
                 </div>
-            </div>
-        </section>
-    @endunless
+            @endif
+        </div>
+    </section>
 @endif

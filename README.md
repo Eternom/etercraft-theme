@@ -18,7 +18,7 @@ Tout se règle depuis l'administration, sans toucher au code.
   | Vote | Podium des meilleurs voteurs du mois | Sites de vote, podium, objectif, récompenses |
   | Shop | Articles mis en avant | Toutes les pages (paiement PayPal : style du thème seulement) |
   | Wiki | Catégories et recherche | Accueil du wiki et en-tête des pages |
-  | Forum | Discussions récentes | Style du thème (composants Bootstrap) |
+  | Forum | Discussions récentes (ou invitation à lancer la première) | Accueil, forums, discussions, fil d'Ariane |
 
 - Couleur principale au choix, liens supplémentaires et mentions du pied de page, français et anglais.
 
