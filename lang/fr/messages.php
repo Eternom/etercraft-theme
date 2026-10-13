@@ -5,6 +5,12 @@ return [
         'azuriom_info' => 'Le nom du site, sa description (reprise dans le pied de page), le logo, l\'image de fond et le copyright se règlent dans les paramètres d\'Azuriom. Discord et les autres réseaux s\'ajoutent dans Réseaux sociaux : un lien Discord y affiche aussi un bouton sur l\'accueil.',
         'azuriom_settings' => 'Paramètres',
         'azuriom_social' => 'Réseaux sociaux',
+        'tabs' => [
+            'home' => 'Accueil',
+            'features' => 'Ce qui t\x27attend',
+            'join' => 'Rejoindre',
+            'footer' => 'Pied de page',
+        ],
         'home' => 'Accueil',
         'color' => 'Couleur principale',
         'color_info' => 'Boutons, liens et lueurs. Par défaut : #FF7A00, l\'orange d\'EterCraft.',

@@ -5,6 +5,12 @@ return [
         'azuriom_info' => 'The site name, its description (shown in the footer), the logo, the background image and the copyright are set in the Azuriom settings. Discord and other networks are added in Social links: a Discord link there also shows a button on the home page.',
         'azuriom_settings' => 'Settings',
         'azuriom_social' => 'Social links',
+        'tabs' => [
+            'home' => 'Home',
+            'features' => 'What awaits you',
+            'join' => 'Join',
+            'footer' => 'Footer',
+        ],
         'home' => 'Home page',
         'color' => 'Main color',
         'color_info' => 'Buttons, links and glows. Default: #FF7A00, EterCraft orange.',
