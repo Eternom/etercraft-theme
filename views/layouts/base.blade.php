@@ -73,6 +73,9 @@
                     @if(Route::has('shop.home'))
                         <li><a href="{{ route('shop.home') }}">{{ trans('theme::messages.footer.shop') }}</a></li>
                     @endif
+                    @if(Route::has('forum.home'))
+                        <li><a href="{{ route('forum.home') }}">Forum</a></li>
+                    @endif
                     @foreach(config('theme.footer_links') ?? [] as $link)
                         <li><a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer">{{ $link['name'] }}</a></li>
                     @endforeach

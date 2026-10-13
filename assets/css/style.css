@@ -1,5 +1,5 @@
 /*
- * EterCraft : thème sombre et moderne. Les couleurs de Bootstrap sont redéfinies ici, donc les pages des plugins
+ * ThxClaude : thème sombre et moderne. Les couleurs de Bootstrap sont redéfinies ici, donc les pages des plugins
  * (vote, boutique, wiki...) prennent le style du thème sans être modifiées. La couleur principale vient des réglages
  * du thème (elements.theme-color).
  */
@@ -20,11 +20,11 @@
     --bs-border-radius-sm: .5rem;
     --bs-border-radius-lg: 1rem;
 
-    --ec-display: "Outfit", "Inter", system-ui, sans-serif;
-    --ec-glass: rgba(255, 255, 255, .035);
-    --ec-glass-strong: rgba(22, 18, 15, .72);
-    --ec-glass-border: rgba(255, 255, 255, .08);
-    --ec-ease: cubic-bezier(.22, 1, .36, 1);
+    --tc-display: "Outfit", "Inter", system-ui, sans-serif;
+    --tc-glass: rgba(255, 255, 255, .035);
+    --tc-glass-strong: rgba(22, 18, 15, .72);
+    --tc-glass-border: rgba(255, 255, 255, .08);
+    --tc-ease: cubic-bezier(.22, 1, .36, 1);
 }
 
 body {
@@ -40,7 +40,7 @@ body {
 
 a {
     text-decoration: none;
-    transition: color .2s var(--ec-ease);
+    transition: color .2s var(--tc-ease);
 }
 
 img {
@@ -50,7 +50,7 @@ img {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-weight: 600;
     letter-spacing: -.01em;
 }
@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6,
 
 .site-navbar {
     padding: 1rem 0;
-    transition: background-color .35s var(--ec-ease), padding .35s var(--ec-ease), border-color .35s var(--ec-ease);
+    transition: background-color .35s var(--tc-ease), padding .35s var(--tc-ease), border-color .35s var(--tc-ease);
     border-bottom: 1px solid transparent;
 }
 
@@ -72,11 +72,11 @@ h1, h2, h3, h4, h5, h6,
     padding: .6rem 0;
     background: rgba(12, 10, 9, .78);
     backdrop-filter: blur(16px) saturate(140%);
-    border-bottom-color: var(--ec-glass-border);
+    border-bottom-color: var(--tc-glass-border);
 }
 
 .site-brand {
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-weight: 700;
     font-size: 1.5rem;
     background: linear-gradient(90deg, var(--bs-primary), #ffb347);
@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6,
     color: rgba(231, 226, 220, .72);
     border-radius: .6rem;
     padding: .45rem .85rem !important;
-    transition: color .2s var(--ec-ease), background-color .2s var(--ec-ease);
+    transition: color .2s var(--tc-ease), background-color .2s var(--tc-ease);
 }
 
 .site-navbar .nav-link:hover,
@@ -134,8 +134,8 @@ h1, h2, h3, h4, h5, h6,
 .list-group-item,
 .modal-content,
 .accordion-item {
-    background: var(--ec-glass);
-    border: 1px solid var(--ec-glass-border);
+    background: var(--tc-glass);
+    border: 1px solid var(--tc-glass-border);
     border-radius: 1rem;
     backdrop-filter: blur(10px);
 }
@@ -143,13 +143,13 @@ h1, h2, h3, h4, h5, h6,
 .card-header,
 .card-footer {
     background: rgba(255, 255, 255, .02);
-    border-color: var(--ec-glass-border);
+    border-color: var(--tc-glass-border);
 }
 
 .glass-card {
     display: block;
     color: inherit;
-    transition: transform .4s var(--ec-ease), border-color .4s var(--ec-ease), background-color .4s var(--ec-ease);
+    transition: transform .4s var(--tc-ease), border-color .4s var(--tc-ease), background-color .4s var(--tc-ease);
 }
 
 a.glass-card:hover {
@@ -159,8 +159,8 @@ a.glass-card:hover {
 }
 
 .dropdown-menu {
-    background: var(--ec-glass-strong);
-    border: 1px solid var(--ec-glass-border);
+    background: var(--tc-glass-strong);
+    border: 1px solid var(--tc-glass-border);
     border-radius: .9rem;
     backdrop-filter: blur(16px);
     padding: .4rem;
@@ -180,7 +180,7 @@ a.glass-card:hover {
 .btn {
     border-radius: .75rem;
     font-weight: 500;
-    transition: transform .2s var(--ec-ease), box-shadow .3s var(--ec-ease), background-color .2s var(--ec-ease), border-color .2s var(--ec-ease);
+    transition: transform .2s var(--tc-ease), box-shadow .3s var(--tc-ease), background-color .2s var(--tc-ease), border-color .2s var(--tc-ease);
 }
 
 .btn:active {
@@ -232,14 +232,14 @@ a.glass-card:hover {
 
 .table {
     --bs-table-bg: transparent;
-    --bs-table-border-color: var(--ec-glass-border);
+    --bs-table-border-color: var(--tc-glass-border);
 }
 
 .table-dark,
 .table > thead {
     --bs-table-color: var(--bs-emphasis-color);
     --bs-table-bg: rgba(var(--bs-primary-rgb), .08);
-    --bs-table-border-color: var(--ec-glass-border);
+    --bs-table-border-color: var(--tc-glass-border);
 }
 
 .badge {
@@ -253,8 +253,8 @@ a.glass-card:hover {
 }
 
 .pagination {
-    --bs-pagination-bg: var(--ec-glass);
-    --bs-pagination-border-color: var(--ec-glass-border);
+    --bs-pagination-bg: var(--tc-glass);
+    --bs-pagination-border-color: var(--tc-glass-border);
 }
 
 /* ---------- Accueil ---------- */
@@ -281,8 +281,8 @@ a.glass-card:hover {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse 70% 60% at 50% 45%, rgba(12, 10, 9, calc(var(--ec-shade, .6) * .75)), rgba(12, 10, 9, min(calc(var(--ec-shade, .6) + .2), .95))),
-        linear-gradient(to bottom, rgba(12, 10, 9, calc(var(--ec-shade, .6) * .5)), var(--bs-body-bg));
+        radial-gradient(ellipse 70% 60% at 50% 45%, rgba(12, 10, 9, calc(var(--tc-shade, .6) * .75)), rgba(12, 10, 9, min(calc(var(--tc-shade, .6) + .2), .95))),
+        linear-gradient(to bottom, rgba(12, 10, 9, calc(var(--tc-shade, .6) * .5)), var(--bs-body-bg));
 }
 
 .hero-slide {
@@ -292,7 +292,7 @@ a.glass-card:hover {
     background-position: center;
     opacity: 0;
     transform: scale(1.08);
-    transition: opacity 1.6s var(--ec-ease), transform 7s linear;
+    transition: opacity 1.6s var(--tc-ease), transform 7s linear;
 }
 
 .hero-slide.active {
@@ -343,7 +343,7 @@ a.glass-card:hover {
     gap: .55rem;
     padding: .4rem 1rem;
     border-radius: 999px;
-    border: 1px solid var(--ec-glass-border);
+    border: 1px solid var(--tc-glass-border);
     background: rgba(255, 255, 255, .05);
     backdrop-filter: blur(10px);
     font-size: .9rem;
@@ -364,7 +364,7 @@ a.glass-card:hover {
 }
 
 .hero-title {
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-weight: 700;
     font-size: clamp(3.5rem, 11vw, 7.5rem);
     line-height: 1;
@@ -377,7 +377,7 @@ a.glass-card:hover {
 }
 
 .hero-lead {
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     color: var(--bs-primary);
     margin-bottom: .75rem;
@@ -421,8 +421,8 @@ a.glass-card:hover {
 
 .hero-cinematic .hero-slides::after {
     background:
-        linear-gradient(to top, var(--bs-body-bg) 2%, rgba(12, 10, 9, calc(var(--ec-shade, .6) * .7)) 45%, rgba(12, 10, 9, calc(var(--ec-shade, .6) * .35))),
-        linear-gradient(to right, rgba(12, 10, 9, var(--ec-shade, .6)), transparent 65%);
+        linear-gradient(to top, var(--bs-body-bg) 2%, rgba(12, 10, 9, calc(var(--tc-shade, .6) * .7)) 45%, rgba(12, 10, 9, calc(var(--tc-shade, .6) * .35))),
+        linear-gradient(to right, rgba(12, 10, 9, var(--tc-shade, .6)), transparent 65%);
 }
 
 .hero-dots {
@@ -468,13 +468,13 @@ a.glass-card:hover {
     aspect-ratio: 4 / 3;
     border-radius: 1.75rem;
     overflow: hidden;
-    border: 1px solid var(--ec-glass-border);
+    border: 1px solid var(--tc-glass-border);
     background:
         radial-gradient(circle at 70% 30%, rgba(var(--bs-primary-rgb), .3), transparent 55%),
-        var(--ec-glass);
+        var(--tc-glass);
     box-shadow: 0 2.5rem 6rem -2rem rgba(var(--bs-primary-rgb), .35);
     transform: perspective(1400px) rotateY(-7deg) rotateX(2deg);
-    transition: transform .9s var(--ec-ease);
+    transition: transform .9s var(--tc-ease);
 }
 
 .hero-frame:hover {
@@ -490,7 +490,7 @@ a.glass-card:hover {
     inset: 0;
     display: grid;
     place-items: center;
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-size: clamp(3rem, 7vw, 5rem);
     font-weight: 700;
     color: rgba(255, 255, 255, .08);
@@ -574,7 +574,7 @@ a.glass-card:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid var(--ec-glass-border);
+    border-bottom: 1px solid var(--tc-glass-border);
 }
 
 .feature-row {
@@ -585,7 +585,7 @@ a.glass-card:hover {
     align-items: center;
     gap: 1.5rem;
     padding: 2rem 1.5rem;
-    border-top: 1px solid var(--ec-glass-border);
+    border-top: 1px solid var(--tc-glass-border);
     overflow: hidden;
 }
 
@@ -597,7 +597,7 @@ a.glass-card:hover {
     z-index: -1;
     background: linear-gradient(90deg, rgba(var(--bs-primary-rgb), .1), transparent 70%);
     transform: translateX(-100%);
-    transition: transform .6s var(--ec-ease);
+    transition: transform .6s var(--tc-ease);
 }
 
 .feature-row:hover::before {
@@ -607,17 +607,17 @@ a.glass-card:hover {
 .feature-index {
     align-self: start;
     padding-top: .35rem;
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-size: .95rem;
     letter-spacing: .1em;
     color: var(--bs-secondary-color);
-    transition: color .4s var(--ec-ease);
+    transition: color .4s var(--tc-ease);
 }
 
 .feature-row h3 {
     font-size: clamp(1.3rem, 2.4vw, 1.75rem);
     margin: 0 0 .4rem;
-    transition: transform .5s var(--ec-ease);
+    transition: transform .5s var(--tc-ease);
 }
 
 .feature-row p {
@@ -629,7 +629,7 @@ a.glass-card:hover {
 .feature-glyph {
     font-size: 2.25rem;
     color: rgba(255, 255, 255, .14);
-    transition: color .4s var(--ec-ease), transform .5s var(--ec-ease);
+    transition: color .4s var(--tc-ease), transform .5s var(--tc-ease);
 }
 
 .feature-row:hover .feature-index,
@@ -673,9 +673,9 @@ a.glass-card:hover {
     gap: 2.5rem;
     padding: 2rem;
     border-radius: 1.25rem;
-    background: var(--ec-glass);
-    border: 1px solid var(--ec-glass-border);
-    transition: border-color .4s var(--ec-ease), transform .5s var(--ec-ease);
+    background: var(--tc-glass);
+    border: 1px solid var(--tc-glass-border);
+    transition: border-color .4s var(--tc-ease), transform .5s var(--tc-ease);
 }
 
 .bento-card::before {
@@ -685,7 +685,7 @@ a.glass-card:hover {
     z-index: -1;
     background: radial-gradient(28rem circle at var(--x, 50%) var(--y, 50%), rgba(var(--bs-primary-rgb), .14), transparent 45%);
     opacity: 0;
-    transition: opacity .4s var(--ec-ease);
+    transition: opacity .4s var(--tc-ease);
 }
 
 .bento-card:hover {
@@ -718,7 +718,7 @@ a.glass-card:hover {
     min-height: 24rem;
     background:
         radial-gradient(ellipse at 100% 0%, rgba(var(--bs-primary-rgb), .16), transparent 60%),
-        var(--ec-glass);
+        var(--tc-glass);
 }
 
 .bento-card-lead h3 {
@@ -764,7 +764,7 @@ a.glass-card:hover {
 }
 
 .showcase-tabs {
-    border-bottom: 1px solid var(--ec-glass-border);
+    border-bottom: 1px solid var(--tc-glass-border);
 }
 
 .showcase-tab {
@@ -778,7 +778,7 @@ a.glass-card:hover {
     color: var(--bs-secondary-color);
     background: none;
     border: 0;
-    border-top: 1px solid var(--ec-glass-border);
+    border-top: 1px solid var(--tc-glass-border);
 }
 
 /* Trait de la couleur du thème qui se déploie sur l'élément actif */
@@ -790,21 +790,21 @@ a.glass-card:hover {
     width: 0;
     height: 1px;
     background: var(--bs-primary);
-    transition: width .6s var(--ec-ease);
+    transition: width .6s var(--tc-ease);
 }
 
 .showcase-name {
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-size: 1.35rem;
     font-weight: 600;
-    transition: color .3s var(--ec-ease);
+    transition: color .3s var(--tc-ease);
 }
 
 .showcase-arrow {
     color: var(--bs-primary);
     opacity: 0;
     transform: translateX(-.5rem);
-    transition: opacity .3s var(--ec-ease), transform .4s var(--ec-ease);
+    transition: opacity .3s var(--tc-ease), transform .4s var(--tc-ease);
 }
 
 .showcase-text {
@@ -835,11 +835,11 @@ a.glass-card:hover {
     min-height: 28rem;
     border-radius: 1.5rem;
     overflow: hidden;
-    border: 1px solid var(--ec-glass-border);
+    border: 1px solid var(--tc-glass-border);
     background:
         radial-gradient(ellipse at 80% 15%, rgba(var(--bs-primary-rgb), .2), transparent 55%),
         radial-gradient(ellipse at 10% 100%, rgba(255, 179, 71, .08), transparent 50%),
-        var(--ec-glass);
+        var(--tc-glass);
 }
 
 .showcase-panel {
@@ -852,7 +852,7 @@ a.glass-card:hover {
     opacity: 0;
     transform: translateY(1rem);
     pointer-events: none;
-    transition: opacity .5s var(--ec-ease), transform .6s var(--ec-ease);
+    transition: opacity .5s var(--tc-ease), transform .6s var(--tc-ease);
 }
 
 .showcase-panel.active {
@@ -889,7 +889,7 @@ a.glass-card:hover {
     z-index: -2;
     background-size: cover;
     background-position: center;
-    transition: transform 1.2s var(--ec-ease), opacity .5s var(--ec-ease);
+    transition: transform 1.2s var(--tc-ease), opacity .5s var(--tc-ease);
 }
 
 .card-image::after {
@@ -931,7 +931,7 @@ a.glass-card:hover {
 }
 
 .showcase-panel.active .card-image {
-    animation: hero-zoom 12s var(--ec-ease) forwards;
+    animation: hero-zoom 12s var(--tc-ease) forwards;
 }
 
 .feature-thumb {
@@ -940,9 +940,9 @@ a.glass-card:hover {
     border-radius: .75rem;
     background-size: cover;
     background-position: center;
-    border: 1px solid var(--ec-glass-border);
+    border: 1px solid var(--tc-glass-border);
     filter: grayscale(.7) brightness(.7);
-    transition: filter .5s var(--ec-ease), transform .5s var(--ec-ease);
+    transition: filter .5s var(--tc-ease), transform .5s var(--tc-ease);
 }
 
 .feature-row:hover .feature-thumb {
@@ -964,7 +964,7 @@ a.glass-card:hover {
     flex-direction: column;
     justify-content: flex-end;
     min-height: 15rem;
-    transition: border-color .4s var(--ec-ease), transform .5s var(--ec-ease);
+    transition: border-color .4s var(--tc-ease), transform .5s var(--tc-ease);
 }
 
 .step-card:hover {
@@ -1016,13 +1016,13 @@ a.glass-card:hover {
     height: 3rem;
     margin: 0 auto 1.5rem;
     border-radius: 50%;
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-weight: 600;
     color: var(--bs-primary);
     background: rgba(var(--bs-primary-rgb), .1);
     border: 1px solid rgba(var(--bs-primary-rgb), .5);
     box-shadow: 0 0 2rem rgba(var(--bs-primary-rgb), .25);
-    transition: background-color .4s var(--ec-ease), color .4s var(--ec-ease);
+    transition: background-color .4s var(--tc-ease), color .4s var(--tc-ease);
 }
 
 .timeline-step:hover .timeline-dot {
@@ -1034,11 +1034,11 @@ a.glass-card:hover {
     aspect-ratio: 16 / 10;
     margin-bottom: 1.25rem;
     border-radius: 1rem;
-    border: 1px solid var(--ec-glass-border);
+    border: 1px solid var(--tc-glass-border);
     background-size: cover;
     background-position: center;
     filter: saturate(.75) brightness(.85);
-    transition: filter .5s var(--ec-ease), transform .5s var(--ec-ease);
+    transition: filter .5s var(--tc-ease), transform .5s var(--tc-ease);
 }
 
 .timeline-step:hover .timeline-image {
@@ -1050,11 +1050,11 @@ a.glass-card:hover {
 .timeline-image-empty {
     display: grid;
     place-items: center;
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-size: 5rem;
     font-weight: 700;
     color: rgba(var(--bs-primary-rgb), .15);
-    background: radial-gradient(circle at 50% 40%, rgba(var(--bs-primary-rgb), .14), transparent 65%), var(--ec-glass);
+    background: radial-gradient(circle at 50% 40%, rgba(var(--bs-primary-rgb), .14), transparent 65%), var(--tc-glass);
 }
 
 .timeline-step h3 {
@@ -1104,10 +1104,10 @@ a.glass-card:hover {
     padding: 2.5rem;
     border-radius: 1.75rem;
     overflow: hidden;
-    border: 1px solid var(--ec-glass-border);
+    border: 1px solid var(--tc-glass-border);
     background:
         radial-gradient(circle at 30% 20%, rgba(var(--bs-primary-rgb), .25), transparent 55%),
-        var(--ec-glass);
+        var(--tc-glass);
 }
 
 .join-visual::after {
@@ -1132,7 +1132,7 @@ a.glass-card:hover {
     background-position: center;
     opacity: 0;
     transform: scale(1.06);
-    transition: opacity .8s var(--ec-ease), transform 1.4s var(--ec-ease);
+    transition: opacity .8s var(--tc-ease), transform 1.4s var(--tc-ease);
 }
 
 .join-visual-image.active {
@@ -1155,7 +1155,7 @@ a.glass-card:hover {
     bottom: 3rem;
     left: 3rem;
     width: 1px;
-    background: var(--ec-glass-border);
+    background: var(--tc-glass-border);
 }
 
 .join-step {
@@ -1167,12 +1167,12 @@ a.glass-card:hover {
     border-radius: 1.25rem;
     border: 1px solid transparent;
     outline: none;
-    transition: background-color .4s var(--ec-ease), border-color .4s var(--ec-ease);
+    transition: background-color .4s var(--tc-ease), border-color .4s var(--tc-ease);
 }
 
 .join-step.active {
-    background: var(--ec-glass);
-    border-color: var(--ec-glass-border);
+    background: var(--tc-glass);
+    border-color: var(--tc-glass-border);
 }
 
 .join-step-number {
@@ -1182,12 +1182,12 @@ a.glass-card:hover {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-weight: 600;
     color: var(--bs-secondary-color);
     background: var(--bs-body-bg);
-    border: 1px solid var(--ec-glass-border);
-    transition: all .4s var(--ec-ease);
+    border: 1px solid var(--tc-glass-border);
+    transition: all .4s var(--tc-ease);
 }
 
 .join-step.active .join-step-number {
@@ -1217,7 +1217,7 @@ a.glass-card:hover {
     position: absolute;
     top: -1.5rem;
     right: .5rem;
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-weight: 700;
     font-size: 8rem;
     line-height: 1;
@@ -1242,7 +1242,7 @@ a.glass-card:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform .6s var(--ec-ease);
+    transition: transform .6s var(--tc-ease);
 }
 
 .post-card:hover .post-image img {
@@ -1265,7 +1265,7 @@ a.glass-card:hover {
     border: 1px solid rgba(var(--bs-primary-rgb), .25);
     background:
         radial-gradient(ellipse 60% 120% at 0% 50%, rgba(var(--bs-primary-rgb), .18), transparent 60%),
-        var(--ec-glass);
+        var(--tc-glass);
 }
 
 .cta-card h2 {
@@ -1284,22 +1284,516 @@ a.glass-card:hover {
     }
 }
 
+/* ---------- Plugins (Vote, Shop, Wiki, Forum) ---------- */
+
+/* En-tête de section : titre à gauche, lien ou recherche à droite */
+.section-head-split {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.section-head-split h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin: .75rem 0 .5rem;
+}
+
+.section-head-split p {
+    color: var(--bs-secondary-color);
+    margin: 0;
+}
+
+/* Vote : encart de l'accueil et podium */
+.vote-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    border-radius: 1.75rem;
+    border: 1px solid rgba(var(--bs-primary-rgb), .25);
+    background:
+        radial-gradient(ellipse at 100% 100%, rgba(var(--bs-primary-rgb), .2), transparent 60%),
+        var(--tc-glass);
+}
+
+.vote-showcase h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin: .75rem 0;
+}
+
+.vote-showcase p {
+    color: var(--bs-secondary-color);
+    margin-bottom: 1.75rem;
+}
+
+.podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: .75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.podium-place {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .35rem;
+    flex: 1;
+    max-width: 9rem;
+    text-align: center;
+}
+
+.podium-avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    border: 2px solid var(--tc-glass-border);
+    image-rendering: pixelated;
+}
+
+.podium-place-1 .podium-avatar {
+    width: 5rem;
+    height: 5rem;
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 2rem rgba(var(--bs-primary-rgb), .45);
+}
+
+.podium-name {
+    max-width: 100%;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.podium-votes {
+    font-size: .85rem;
+    color: var(--bs-secondary-color);
+}
+
+/* Marche du podium : la hauteur suit la place */
+.podium-step {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 4rem;
+    margin-top: .5rem;
+    border-radius: .9rem .9rem 0 0;
+    font-family: var(--tc-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--bs-secondary-color);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, .07), transparent);
+    border: 1px solid var(--tc-glass-border);
+    border-bottom: 0;
+}
+
+.podium-place-1 .podium-step {
+    height: 6rem;
+    color: var(--bs-primary);
+    background: linear-gradient(to bottom, rgba(var(--bs-primary-rgb), .25), transparent);
+    border-color: rgba(var(--bs-primary-rgb), .4);
+}
+
+.podium-place-3 .podium-step {
+    height: 3rem;
+}
+
+.podium-empty {
+    color: var(--bs-secondary-color);
+    text-align: center;
+    margin: 0;
+}
+
+@media (max-width: 767.98px) {
+    .vote-showcase {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Vote : page du plugin */
+.vote-panel {
+    position: relative;
+    padding: 2rem;
+}
+
+.vote-panel-title {
+    font-size: 1.35rem;
+    margin-bottom: 1.25rem;
+}
+
+.vote-panel-note {
+    margin: 1.5rem 0 0;
+    color: var(--bs-secondary-color);
+}
+
+.vote-sites {
+    display: grid;
+    gap: .75rem;
+}
+
+.vote-site {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    text-align: left;
+    color: var(--bs-emphasis-color);
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid var(--tc-glass-border);
+    border-radius: 1rem;
+}
+
+.vote-site:hover {
+    color: var(--bs-emphasis-color);
+    border-color: rgba(var(--bs-primary-rgb), .5);
+    background: rgba(var(--bs-primary-rgb), .08);
+}
+
+.vote-site-name {
+    flex: 1;
+    font-weight: 600;
+}
+
+/* Délai restant, rempli par le script du plugin ; vide quand le site est disponible */
+.vote-timer:not(:empty) {
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    color: var(--bs-secondary-color);
+    background: rgba(255, 255, 255, .06);
+}
+
+.vote-site.disabled {
+    opacity: .5;
+    border-color: var(--tc-glass-border);
+}
+
+/* Voile pendant la vérification d'un vote (classe .voting posée par le plugin) */
+.vote-panel .spinner-parent {
+    display: none;
+}
+
+.vote-panel.voting .spinner-parent {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+    background: rgba(12, 10, 9, .7);
+    backdrop-filter: blur(4px);
+}
+
+.vote-ranking {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+}
+
+.vote-ranking li {
+    display: flex;
+    gap: 1rem;
+    padding: .6rem 0;
+    border-top: 1px solid var(--tc-glass-border);
+}
+
+.vote-ranking-position {
+    width: 1.5rem;
+    color: var(--bs-secondary-color);
+}
+
+.vote-ranking-name {
+    flex: 1;
+}
+
+.vote-ranking-votes {
+    font-weight: 600;
+    color: var(--bs-primary);
+}
+
+.vote-goal-bar {
+    height: .6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .06);
+}
+
+.vote-goal-bar .progress-bar {
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--bs-primary), #FFB347);
+    box-shadow: 0 0 1rem rgba(var(--bs-primary-rgb), .5);
+}
+
+.vote-reward {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.vote-reward img,
+.vote-reward .bi {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: contain;
+    font-size: 2.25rem;
+    color: var(--bs-primary);
+}
+
+.vote-reward-name {
+    font-weight: 600;
+}
+
+.vote-reward-chances {
+    font-size: .85rem;
+    color: var(--bs-secondary-color);
+}
+
+/* Shop : carte d'article (accueil et pages de catégorie) */
+.package-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    color: inherit;
+    border-radius: 1.25rem;
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
+    transition: transform .5s var(--tc-ease), border-color .4s var(--tc-ease);
+}
+
+.package-card:hover {
+    color: inherit;
+    transform: translateY(-4px);
+    border-color: rgba(var(--bs-primary-rgb), .4);
+}
+
+.package-image {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 40%, rgba(var(--bs-primary-rgb), .18), transparent 70%);
+}
+
+.package-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .8s var(--tc-ease);
+}
+
+.package-image .bi {
+    font-size: 3rem;
+    color: rgba(var(--bs-primary-rgb), .6);
+}
+
+.package-card:hover .package-image img {
+    transform: scale(1.06);
+}
+
+.package-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: 1.25rem;
+}
+
+.package-body h3 {
+    font-size: 1.15rem;
+    margin: 0;
+}
+
+.package-price {
+    font-family: var(--tc-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--bs-primary);
+}
+
+.package-price del {
+    margin-right: .35rem;
+    font-size: .9rem;
+    font-weight: 400;
+    color: var(--bs-secondary-color);
+}
+
+/* Wiki : recherche et tuiles de catégories */
+.wiki-search {
+    position: relative;
+    width: min(100%, 22rem);
+}
+
+.wiki-search .bi {
+    position: absolute;
+    top: 50%;
+    left: 1.1rem;
+    transform: translateY(-50%);
+    color: var(--bs-secondary-color);
+}
+
+.wiki-search input {
+    width: 100%;
+    padding: .8rem 1rem .8rem 2.75rem;
+    color: var(--bs-body-color);
+    border-radius: 999px;
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
+    outline: none;
+    transition: border-color .3s var(--tc-ease), box-shadow .3s var(--tc-ease);
+}
+
+.wiki-search input:focus {
+    border-color: rgba(var(--bs-primary-rgb), .6);
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .15);
+}
+
+.wiki-tile {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    height: 100%;
+    padding: 1.25rem 1.4rem;
+    color: var(--bs-emphasis-color);
+    border-radius: 1.1rem;
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
+    transition: border-color .4s var(--tc-ease), transform .5s var(--tc-ease);
+}
+
+/* Même halo que la mosaïque, piloté par [data-spotlight] */
+.wiki-tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(14rem circle at var(--x, 50%) var(--y, 50%), rgba(var(--bs-primary-rgb), .16), transparent 50%);
+    opacity: 0;
+    transition: opacity .4s var(--tc-ease);
+}
+
+.wiki-tile:hover {
+    color: var(--bs-emphasis-color);
+    transform: translateY(-3px);
+    border-color: rgba(var(--bs-primary-rgb), .35);
+}
+
+.wiki-tile:hover::before {
+    opacity: 1;
+}
+
+.wiki-tile > .bi:first-child {
+    font-size: 1.5rem;
+    color: var(--bs-primary);
+}
+
+.wiki-tile span {
+    flex: 1;
+    font-weight: 600;
+}
+
+.wiki-tile-arrow {
+    opacity: 0;
+    transform: translateX(-.4rem);
+    transition: opacity .3s var(--tc-ease), transform .4s var(--tc-ease);
+}
+
+.wiki-tile:hover .wiki-tile-arrow {
+    opacity: 1;
+    transform: none;
+}
+
+/* Contenu des pages du wiki : lecture confortable */
+#wiki .tab-pane .card-body {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.75;
+}
+
+/* Forum : fil des discussions récentes sur l'accueil */
+.forum-feed {
+    border-bottom: 1px solid var(--tc-glass-border);
+}
+
+.forum-feed-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1rem;
+    color: inherit;
+    border-top: 1px solid var(--tc-glass-border);
+    transition: background-color .3s var(--tc-ease);
+}
+
+.forum-feed-item:hover {
+    color: inherit;
+    background: rgba(255, 255, 255, .03);
+}
+
+.forum-feed-avatar {
+    flex-shrink: 0;
+    border-radius: .75rem;
+    image-rendering: pixelated;
+}
+
+.forum-feed-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.forum-feed-body h3 {
+    font-size: 1.1rem;
+    margin: 0 0 .2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color .3s var(--tc-ease);
+}
+
+.forum-feed-item:hover h3 {
+    color: var(--bs-primary);
+}
+
+.forum-feed-body span {
+    font-size: .875rem;
+    color: var(--bs-secondary-color);
+}
+
+.forum-feed-replies {
+    flex-shrink: 0;
+    color: var(--bs-secondary-color);
+}
+
 /* ---------- Pied de page ---------- */
 
 .site-footer {
-    border-top: 1px solid var(--ec-glass-border);
+    border-top: 1px solid var(--tc-glass-border);
     background: rgba(255, 255, 255, .015);
 }
 
 .footer-brand {
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-weight: 700;
     font-size: 1.6rem;
     color: #fff;
 }
 
 .footer-title {
-    font-family: var(--ec-display);
+    font-family: var(--tc-display);
     font-weight: 600;
     margin-bottom: 1rem;
 }
@@ -1323,11 +1817,11 @@ a.glass-card:hover {
     width: 2.6rem;
     height: 2.6rem;
     border-radius: .75rem;
-    border: 1px solid var(--ec-glass-border);
-    background: var(--ec-glass);
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
     color: rgba(231, 226, 220, .8);
     font-size: 1.15rem;
-    transition: color .2s var(--ec-ease), border-color .2s var(--ec-ease), transform .2s var(--ec-ease);
+    transition: color .2s var(--tc-ease), border-color .2s var(--tc-ease), transform .2s var(--tc-ease);
 }
 
 .social-link:hover {
@@ -1337,7 +1831,7 @@ a.glass-card:hover {
 }
 
 .footer-bottom {
-    border-top: 1px solid var(--ec-glass-border);
+    border-top: 1px solid var(--tc-glass-border);
 }
 
 /* ---------- Animations ---------- */
@@ -1345,7 +1839,7 @@ a.glass-card:hover {
 .js-reveal [data-reveal] {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity .8s var(--ec-ease), transform .8s var(--ec-ease);
+    transition: opacity .8s var(--tc-ease), transform .8s var(--tc-ease);
 }
 
 .js-reveal [data-reveal].revealed {

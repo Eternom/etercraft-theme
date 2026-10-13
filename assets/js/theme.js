@@ -1,5 +1,5 @@
 /*
- * EterCraft : petites interactions du thème, sans dépendance.
+ * ThxClaude : petites interactions du thème, sans dépendance.
  * - la navigation devient opaque dès qu'on défile ;
  * - les éléments [data-reveal] apparaissent en douceur quand ils entrent à l'écran ;
  * - un bouton .copy-ip copie l'adresse du serveur et l'indique pendant 2 secondes.

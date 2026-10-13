@@ -1,14 +1,20 @@
-@if(Route::has('vote.home'))
+{{-- Section Vote (plugin Vote) : podium du mois et bouton pour voter --}}
+@if(plugins()->isEnabled('vote') && config('theme.show_vote', true))
     <section id="vote" class="section">
         <div class="container">
-            <div class="cta-card" data-reveal>
+            <div class="vote-showcase" data-reveal>
                 <div>
-                    <h2>{{ trans('theme::messages.vote.title') }}</h2>
-                    <p class="mb-0">{{ trans('theme::messages.vote.text') }}</p>
+                    <span class="eyebrow">{{ site_name() }}</span>
+                    <h2>{{ config('theme.vote_title') ?: trans('theme::messages.vote.title') }}</h2>
+                    <p>{{ trans('theme::messages.vote.text') }}</p>
+                    <a href="{{ route('vote.home') }}" class="btn btn-primary btn-lg btn-glow">
+                        <i class="bi bi-hand-thumbs-up"></i> {{ trans('theme::messages.hero.vote') }}
+                    </a>
                 </div>
-                <a href="{{ route('vote.home') }}" class="btn btn-primary btn-lg btn-glow flex-shrink-0">
-                    <i class="bi bi-hand-thumbs-up"></i> {{ trans('theme::messages.hero.vote') }}
-                </a>
+
+                @include('elements.vote-podium', [
+                    'voters' => \Azuriom\Plugin\Vote\Models\Vote::getTopVoters(now()->startOfMonth())->take(3),
+                ])
             </div>
         </div>
     </section>

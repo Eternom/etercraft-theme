@@ -11,9 +11,14 @@
     shuffle($heroImages);
     $heroLayout = in_array(config('theme.hero_layout'), ['cinematic', 'split'], true) ? config('theme.hero_layout') : 'centered';
 
-    // Sections sous le hero, dans l'ordre choisi ; une section absente de la config (ajoutée plus tard) va à la fin
-    $sections = ['features', 'join', 'news', 'vote'];
-    $order = array_values(array_unique(array_merge(array_intersect(config('theme.sections') ?? [], $sections), $sections)));
+    // Sections sous le hero, dans l'ordre choisi. Celles d'un plugin n'existent que si le plugin est actif ;
+    // une section absente de la config (ajoutée par une mise à jour du thème) va à la fin.
+    $plugins = ['vote', 'shop', 'wiki', 'forum'];
+    $sections = array_values(array_filter(
+        ['features', 'join', 'news', ...$plugins],
+        fn (string $section) => ! in_array($section, $plugins, true) || plugins()->isEnabled($section),
+    ));
+    $order =array_values(array_unique(array_merge(array_intersect(config('theme.sections') ?? [], $sections), $sections)));
 @endphp
 
 @section('app')

@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin')
 
-@section('title', 'EterCraft')
+@section('title', 'ThxClaude')
 
 @php
     // Les listes sont construites côté navigateur à partir de ces valeurs (voir le script en bas)
@@ -8,8 +8,17 @@
     $joinSteps = array_values(old('join_steps', config('theme.join_steps') ?: trans('theme::messages.join.steps')));
     $footerLinks = array_values(old('footer_links', config('theme.footer_links') ?? []));
     $images = \Azuriom\Models\Image::all();
+
+    // Plugins pris en charge : chacun a sa rubrique et sa section d'accueil, seulement s'il est actif
+    $plugins = array_values(array_filter(['vote', 'shop', 'wiki', 'forum'], fn (string $plugin) => plugins()->isEnabled($plugin)));
+    $pluginIcons = ['vote' => 'hand-thumbs-up', 'shop' => 'bag', 'wiki' => 'book', 'forum' => 'chat-square-text'];
+    $pluginCounts = ['shop' => [4, 8], 'forum' => [5, 10]]; // [valeur par défaut, maximum]
+    $tabs = ['home' => 'house', 'features' => 'grid', 'join' => 'signpost-2']
+        + array_intersect_key($pluginIcons, array_flip($plugins))
+        + ['footer' => 'layout-text-window-reverse'];
+
     // Même règle que l'accueil : une section absente de la config (ajoutée plus tard) va à la fin
-    $sections = ['features', 'join', 'news', 'vote'];
+    $sections = ['features', 'join', 'news', ...$plugins];
     $sectionOrder = array_values(array_unique(array_merge(array_intersect(old('sections', config('theme.sections') ?? []), $sections), $sections)));
 @endphp
 
@@ -27,7 +36,6 @@
         @endif
     </div>
 
-    {{-- Une case décochée n'est pas envoyée : chaque interrupteur a un champ caché à 0 --}}
     @if($errors->any())
         <div class="alert alert-danger">
             <ul class="mb-0">
@@ -41,7 +49,7 @@
     <div class="row g-4">
         <div class="col-lg-3">
             <nav class="nav nav-pills flex-lg-column gap-1 sticky-lg-top" id="configTabs">
-                @foreach(['home' => 'house', 'features' => 'grid', 'join' => 'signpost-2', 'footer' => 'layout-text-window-reverse'] as $tab => $icon)
+                @foreach($tabs as $tab => $icon)
                     <a class="nav-link" href="#tab-{{ $tab }}" data-config-tab-link>
                         <i class="bi bi-{{ $icon }} me-1"></i> {{ trans('theme::messages.config.tabs.'.$tab) }}
                     </a>
@@ -50,6 +58,7 @@
         </div>
 
         <div class="col-lg-9">
+            {{-- Une case décochée n'est pas envoyée : chaque interrupteur a un champ caché à 0 --}}
             <form action="{{ route('admin.themes.config', $theme) }}" method="POST">
                 @csrf
 
@@ -78,12 +87,12 @@
 
                         <div class="mb-3">
                             <label class="form-label" for="titleInput">{{ trans('theme::messages.config.title') }}</label>
-                            <input type="text" class="form-control" id="titleInput" name="title" value="{{ old('title', config('theme.title')) }}">
+                            <input type="text" class="form-control" id="titleInput" name="title" value="{{ old('title', config('theme.title')) }}" placeholder="{{ trans('theme::messages.hero.title') }}">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label" for="subtitleInput">{{ trans('theme::messages.config.subtitle') }}</label>
-                            <textarea class="form-control" id="subtitleInput" name="subtitle" rows="2">{{ old('subtitle', config('theme.subtitle')) }}</textarea>
+                            <textarea class="form-control" id="subtitleInput" name="subtitle" rows="2" placeholder="{{ trans('theme::messages.hero.subtitle') }}">{{ old('subtitle', config('theme.subtitle')) }}</textarea>
                         </div>
 
                         <div class="mb-3">
@@ -262,6 +271,40 @@
                         <small class="form-text d-block mt-2">{{ trans('theme::messages.config.join_info') }}</small>
                     </div>
                 </div>
+
+                @foreach($plugins as $plugin)
+                    <div class="card shadow mb-4" id="tab-{{ $plugin }}" data-config-tab>
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">{{ trans('theme::messages.config.tabs.'.$plugin) }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-body-secondary">
+                                {{ trans('theme::messages.config.plugin_info') }} {{ trans('theme::messages.config.'.$plugin.'_info') }}
+                            </p>
+
+                            <div class="form-check form-switch">
+                                <input type="hidden" name="show_{{ $plugin }}" value="0">
+                                <input type="checkbox" class="form-check-input" id="show_{{ $plugin }}Switch" name="show_{{ $plugin }}" value="1" @checked(old('show_'.$plugin, config('theme.show_'.$plugin, true)))>
+                                <label class="form-check-label" for="show_{{ $plugin }}Switch">{{ trans('theme::messages.config.show_plugin') }}</label>
+                            </div>
+
+                            <div class="row g-3 mt-1">
+                                <div class="col-md-8">
+                                    <label class="form-label" for="{{ $plugin }}TitleInput">{{ trans('theme::messages.config.section_title') }}</label>
+                                    <input type="text" class="form-control" id="{{ $plugin }}TitleInput" name="{{ $plugin }}_title" value="{{ old($plugin.'_title', config('theme.'.$plugin.'_title')) }}" placeholder="{{ trans('theme::messages.'.$plugin.'.title') }}">
+                                </div>
+
+                                @isset($pluginCounts[$plugin])
+                                    @php([$default, $max] = $pluginCounts[$plugin])
+                                    <div class="col-md-4">
+                                        <label class="form-label" for="{{ $plugin }}CountInput">{{ trans('theme::messages.config.plugin_count') }}</label>
+                                        <input type="number" class="form-control" id="{{ $plugin }}CountInput" name="{{ $plugin }}_count" min="1" max="{{ $max }}" value="{{ old($plugin.'_count', config('theme.'.$plugin.'_count', $default)) }}">
+                                    </div>
+                                @endisset
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
 
                 <div class="card shadow mb-4" id="tab-footer" data-config-tab>
                     <div class="card-header">

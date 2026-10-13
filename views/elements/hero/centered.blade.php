@@ -8,12 +8,8 @@
 
         <h1 class="hero-title" data-reveal>{{ site_name() }}</h1>
 
-        @if(config('theme.title'))
-            <p class="hero-lead" data-reveal>{{ config('theme.title') }}</p>
-        @endif
-        @if(config('theme.subtitle'))
-            <p class="hero-text mx-auto" data-reveal>{{ config('theme.subtitle') }}</p>
-        @endif
+        <p class="hero-lead" data-reveal>{{ config('theme.title') ?: trans('theme::messages.hero.title') }}</p>
+        <p class="hero-text mx-auto" data-reveal>{{ config('theme.subtitle') ?: trans('theme::messages.hero.subtitle') }}</p>
 
         @include('elements.hero.actions')
     </div>
