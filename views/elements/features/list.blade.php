@@ -17,7 +17,11 @@
                         <h3>{{ $feature['title'] }}</h3>
                         <p>{{ $feature['text'] }}</p>
                     </div>
-                    <i class="bi bi-{{ Str::after($feature['icon'], 'bi-') }} feature-glyph" aria-hidden="true"></i>
+                    @if(! empty($feature['image']))
+                        <span class="feature-thumb" style="background-image: url('{{ image_url($feature['image']) }}')"></span>
+                    @else
+                        <i class="bi bi-{{ Str::after($feature['icon'], 'bi-') }} feature-glyph" aria-hidden="true"></i>
+                    @endif
                 </li>
             @endforeach
         </ol>

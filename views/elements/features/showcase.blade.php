@@ -24,6 +24,9 @@
         <div class="showcase-stage" data-reveal>
             @foreach($features as $index => $feature)
                 <div class="showcase-panel @if($index === 0) active @endif" data-showcase-panel="{{ $index }}">
+                    @if(! empty($feature['image']))
+                        <div class="card-image" style="background-image: url('{{ image_url($feature['image']) }}')"></div>
+                    @endif
                     <i class="bi bi-{{ Str::after($feature['icon'], 'bi-') }} showcase-glyph" aria-hidden="true"></i>
                     <span class="feature-index">{{ sprintf('%02d', $index + 1) }} / {{ sprintf('%02d', count($features)) }}</span>
                     <h3>{{ $feature['title'] }}</h3>

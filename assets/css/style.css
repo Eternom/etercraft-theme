@@ -764,6 +764,80 @@ a.glass-card:hover {
     filter: drop-shadow(0 0 2.5rem rgba(var(--bs-primary-rgb), .45));
 }
 
+/* Images facultatives des éléments de « Ce qui t'attend » (gestionnaire d'images d'Azuriom) */
+.card-image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1.2s var(--ec-ease), opacity .5s var(--ec-ease);
+}
+
+.card-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(12, 10, 9, .96) 15%, rgba(12, 10, 9, .5) 60%, rgba(12, 10, 9, .25));
+}
+
+.bento-card .card-image {
+    opacity: .18;
+}
+
+.bento-card-lead .card-image {
+    opacity: 1;
+}
+
+.bento-card:hover .card-image {
+    opacity: .35;
+    transform: scale(1.05);
+}
+
+.bento-card-lead:hover .card-image {
+    opacity: 1;
+}
+
+.showcase-panel {
+    isolation: isolate;
+}
+
+.showcase-panel .card-image {
+    transform: scale(1.08);
+}
+
+.showcase-panel .card-image::after {
+    background:
+        linear-gradient(to top, rgba(12, 10, 9, .95) 20%, transparent 75%),
+        linear-gradient(to right, rgba(12, 10, 9, .6), transparent 60%);
+}
+
+.showcase-panel.active .card-image {
+    animation: hero-zoom 12s var(--ec-ease) forwards;
+}
+
+.feature-thumb {
+    width: 7rem;
+    height: 4.5rem;
+    border-radius: .75rem;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--ec-glass-border);
+    filter: grayscale(.7) brightness(.7);
+    transition: filter .5s var(--ec-ease), transform .5s var(--ec-ease);
+}
+
+.feature-row:hover .feature-thumb {
+    filter: none;
+    transform: scale(1.05) rotate(-2deg);
+}
+
+@media (max-width: 575.98px) {
+    .feature-thumb {
+        display: none;
+    }
+}
+
 .step-card {
     position: relative;
     overflow: hidden;

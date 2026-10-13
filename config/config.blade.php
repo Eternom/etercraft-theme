@@ -7,6 +7,7 @@
     $features = array_values(old('features', config('theme.features') ?: trans('theme::messages.features.items')));
     $joinSteps = array_values(old('join_steps', config('theme.join_steps') ?: trans('theme::messages.join.steps')));
     $footerLinks = array_values(old('footer_links', config('theme.footer_links') ?? []));
+    $images = \Azuriom\Models\Image::all();
 @endphp
 
 @section('content')
@@ -144,12 +145,20 @@
                                         </div>
                                     </div>
                                     <textarea class="form-control" rows="2" data-field="text" placeholder="{{ trans('theme::messages.config.item_text') }}" required></textarea>
+                                    <select class="form-select mt-2" data-field="image">
+                                        <option value="">{{ trans('theme::messages.config.item_no_image') }}</option>
+                                        @foreach($images as $image)
+                                            <option value="{{ $image->file }}">{{ $image->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </template>
                         </div>
                         <small class="form-text d-block mt-2">
                             {{ trans('theme::messages.config.features_info') }}
                             <a href="https://icons.getbootstrap.com/" target="_blank" rel="noopener noreferrer">{{ trans('theme::messages.config.icons_link') }}</a>
+                            ·
+                            <a href="{{ route('admin.images.create') }}">{{ trans('theme::messages.config.image_upload') }}</a>
                         </small>
                     </div>
                 </div>

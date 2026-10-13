@@ -14,6 +14,7 @@ return [
     'features.*.icon' => ['required', 'regex:/^(bi-)?[a-z0-9-]+$/'],
     'features.*.title' => ['required', 'string', 'max:60'],
     'features.*.text' => ['required', 'string', 'max:300'],
+    'features.*.image' => ['nullable', 'string', 'max:100'],
     'show_join' => ['boolean'],
     'join_title' => ['nullable', 'string', 'max:80'],
     'join_steps' => ['nullable', 'array', 'max:4'],
