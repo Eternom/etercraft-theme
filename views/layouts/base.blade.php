@@ -40,6 +40,10 @@
 </head>
 
 <body>
+@if(setting('background') && config('theme.background_pages', true) && ! request()->routeIs('home'))
+    <div class="page-background" style="background-image: url('{{ image_url(setting('background')) }}')"></div>
+@endif
+
 <div id="app" class="flex-shrink-0">
     <header>
         @include('elements.navbar')
@@ -53,7 +57,7 @@
         <div class="row g-4">
             <div class="col-lg-5">
                 <a href="{{ route('home') }}" class="footer-brand">{{ site_name() }}</a>
-                <p class="text-body-secondary mt-3 mb-0">{{ trans('theme::messages.footer.tagline') }}</p>
+                <p class="text-body-secondary mt-3 mb-0">{{ setting('description') ?: trans('theme::messages.footer.tagline') }}</p>
             </div>
 
             <div class="col-6 col-lg-3">
@@ -69,17 +73,15 @@
                     @if(Route::has('shop.home'))
                         <li><a href="{{ route('shop.home') }}">{{ trans('theme::messages.footer.shop') }}</a></li>
                     @endif
+                    @foreach(config('theme.footer_links') ?? [] as $link)
+                        <li><a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer">{{ $link['name'] }}</a></li>
+                    @endforeach
                 </ul>
             </div>
 
             <div class="col-6 col-lg-4">
                 <p class="footer-title">{{ trans('theme::messages.footer.community') }}</p>
                 <div class="d-flex flex-wrap gap-2">
-                    @if(config('theme.discord'))
-                        <a href="{{ config('theme.discord') }}" target="_blank" rel="noopener noreferrer" class="social-link" title="Discord">
-                            <i class="bi bi-discord"></i>
-                        </a>
-                    @endif
                     @foreach(social_links() as $link)
                         <a href="{{ $link->value }}" title="{{ $link->title }}" target="_blank" rel="noopener noreferrer" class="social-link">
                             <i class="{{ $link->icon }}"></i>
@@ -93,7 +95,9 @@
     <div class="footer-bottom">
         <div class="container py-3 d-flex flex-column flex-md-row justify-content-between gap-2 small text-body-secondary">
             <span>{{ str_replace('{year}', date('Y'), setting('copyright')) }} · @lang('messages.copyright')</span>
-            <span>{{ trans('theme::messages.footer.mojang') }}</span>
+            @if(config('theme.show_mojang', true))
+                <span>{{ trans('theme::messages.footer.mojang') }}</span>
+            @endif
         </div>
     </div>
 </footer>

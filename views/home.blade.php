@@ -11,12 +11,14 @@
         ['icon' => 'bi-globe2', 'key' => 'resource'],
         ['icon' => 'bi-trophy', 'key' => 'rankings'],
     ];
+    // Discord vient des réseaux sociaux d'Azuriom : un seul endroit pour le régler
+    $discord = social_links()->firstWhere('type', 'discord');
 @endphp
 
 @section('app')
     <section class="hero">
         @if(setting('background'))
-            <div class="hero-image" style="background-image: url('{{ image_url(setting('background')) }}')"></div>
+            <div class="hero-image" style="background-image: url('{{ image_url(setting('background')) }}'); --ec-shade: {{ config('theme.shade', 60) / 100 }}"></div>
         @endif
         <div class="hero-glow"></div>
 
@@ -56,20 +58,20 @@
                         <i class="bi bi-hand-thumbs-up"></i> {{ trans('theme::messages.hero.vote') }}
                     </a>
                 @endif
-                @if(config('theme.discord'))
-                    <a href="{{ config('theme.discord') }}" target="_blank" rel="noopener noreferrer" class="btn btn-glass btn-lg">
+                @if($discord)
+                    <a href="{{ $discord->value }}" target="_blank" rel="noopener noreferrer" class="btn btn-glass btn-lg">
                         <i class="bi bi-discord"></i> Discord
                     </a>
                 @endif
             </div>
         </div>
 
-        <a href="#features" class="hero-scroll" aria-label="{{ trans('theme::messages.hero.discover') }}">
+        <a href="#discover" class="hero-scroll" aria-label="{{ trans('theme::messages.hero.discover') }}">
             <i class="bi bi-chevron-down"></i>
         </a>
     </section>
 
-    <div class="container content">
+    <div id="discover" class="container content">
         @include('elements.session-alerts')
 
         @if($message)
@@ -77,6 +79,7 @@
         @endif
     </div>
 
+    @if(config('theme.show_features', true))
     <section id="features" class="section">
         <div class="container">
             <div class="section-head text-center" data-reveal>
@@ -98,7 +101,9 @@
             </div>
         </div>
     </section>
+    @endif
 
+    @if(config('theme.show_join', true))
     <section class="section">
         <div class="container">
             <div class="section-head text-center" data-reveal>
@@ -118,6 +123,7 @@
             </div>
         </div>
     </section>
+    @endif
 
     @if(! $posts->isEmpty())
         <section class="section">

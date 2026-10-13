@@ -2,13 +2,25 @@
 
 return [
     'config' => [
+        'azuriom_info' => 'Le nom du site, sa description (reprise dans le pied de page), le logo, l\'image de fond et le copyright se règlent dans les paramètres d\'Azuriom. Discord et les autres réseaux s\'ajoutent dans Réseaux sociaux : un lien Discord y affiche aussi un bouton sur l\'accueil.',
+        'azuriom_settings' => 'Paramètres',
+        'azuriom_social' => 'Réseaux sociaux',
+        'home' => 'Accueil',
         'color' => 'Couleur principale',
         'color_info' => 'Boutons, liens et lueurs. Par défaut : #FF7A00, l\'orange d\'EterCraft.',
+        'shade' => 'Assombrissement de l\'image de fond',
+        'shade_info' => 'Plus la valeur est haute, plus le texte ressort sur l\'image.',
         'title' => 'Titre de l\'accueil',
         'subtitle' => 'Sous-titre de l\'accueil',
-        'discord' => 'Lien d\'invitation Discord',
-        'discord_info' => 'Facultatif : affiche un bouton Discord sur l\'accueil et dans le pied de page.',
-        'background_info' => 'L\'image de fond de l\'accueil se règle dans Paramètres → Image de fond. Sans image, un dégradé est affiché.',
+        'background_pages' => 'Afficher aussi l\'image de fond, en fondu, en haut des autres pages',
+        'show_features' => 'Afficher la section « Ce qui t\'attend »',
+        'show_join' => 'Afficher la section « Rejoindre le serveur »',
+        'footer' => 'Pied de page',
+        'footer_links' => 'Liens supplémentaires',
+        'footer_links_info' => 'Ajoutés après Accueil, Voter, Wiki et Boutique (affichés d\'office quand le plugin est installé). 8 au plus.',
+        'link_name' => 'Nom',
+        'link_add' => 'Ajouter un lien',
+        'show_mojang' => 'Afficher la mention « non affilié à Mojang »',
     ],
     'hero' => [
         'online' => ':count joueur en ligne|:count joueurs en ligne',

@@ -2,13 +2,25 @@
 
 return [
     'config' => [
+        'azuriom_info' => 'The site name, its description (shown in the footer), the logo, the background image and the copyright are set in the Azuriom settings. Discord and other networks are added in Social links: a Discord link there also shows a button on the home page.',
+        'azuriom_settings' => 'Settings',
+        'azuriom_social' => 'Social links',
+        'home' => 'Home page',
         'color' => 'Main color',
         'color_info' => 'Buttons, links and glows. Default: #FF7A00, EterCraft orange.',
+        'shade' => 'Background image darkening',
+        'shade_info' => 'The higher the value, the more the text stands out on the image.',
         'title' => 'Home title',
         'subtitle' => 'Home subtitle',
-        'discord' => 'Discord invite link',
-        'discord_info' => 'Optional: shows a Discord button on the home page and in the footer.',
-        'background_info' => 'The home background image is set in Settings → Background image. Without an image, a gradient is shown.',
+        'background_pages' => 'Also show the background image, faded, at the top of other pages',
+        'show_features' => 'Show the "What awaits you" section',
+        'show_join' => 'Show the "Join the server" section',
+        'footer' => 'Footer',
+        'footer_links' => 'Extra links',
+        'footer_links_info' => 'Added after Home, Vote, Wiki and Shop (always shown when the plugin is installed). 8 at most.',
+        'link_name' => 'Name',
+        'link_add' => 'Add a link',
+        'show_mojang' => 'Show the "not affiliated with Mojang" notice',
     ],
     'hero' => [
         'online' => ':count player online|:count players online',
