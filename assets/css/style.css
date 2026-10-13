@@ -1895,6 +1895,128 @@ a.glass-card:hover {
     }
 }
 
+/* Shop : fenêtre d'achat d'un article */
+.package-modal {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background: var(--tc-glass-strong);
+}
+
+.package-modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 2;
+}
+
+.package-modal-image {
+    height: 100%;
+    min-height: 16rem;
+    background: radial-gradient(circle at 50% 40%, rgba(var(--bs-primary-rgb), .2), transparent 70%);
+}
+
+.package-modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.package-modal-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2.25rem 2rem 2rem;
+}
+
+.package-modal-body .modal-title {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin: .5rem 2rem 1rem 0;
+}
+
+.package-modal-description {
+    flex: 1;
+    color: var(--bs-secondary-color);
+}
+
+.package-modal-description > :last-child {
+    margin-bottom: 0;
+}
+
+.package-modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--tc-glass-border);
+}
+
+.package-modal-footer .package-price {
+    font-size: 1.6rem;
+}
+
+.package-modal-buy {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.package-modal-buy .input-group {
+    width: auto;
+}
+
+.package-modal-buy input[type=number] {
+    max-width: 6rem;
+}
+
+.package-modal-unavailable {
+    color: var(--bs-secondary-color);
+}
+
+/* Shop : formulaires, moyens de paiement, historique */
+.shop-form {
+    max-width: 40rem;
+    padding: 2rem;
+}
+
+.shop-gateway {
+    display: grid;
+    place-items: center;
+    height: 6.5rem;
+    padding: 1.25rem;
+    border-radius: 1.1rem;
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
+    transition: transform .5s var(--tc-ease), border-color .4s var(--tc-ease);
+}
+
+.shop-gateway:hover {
+    transform: translateY(-3px);
+    border-color: rgba(var(--bs-primary-rgb), .45);
+}
+
+.shop-gateway img {
+    max-width: 100%;
+    max-height: 2.75rem;
+}
+
+.shop-table {
+    padding: .5rem 1.25rem;
+}
+
+.shop-table-title {
+    font-size: 1.35rem;
+    margin: 2.5rem 0 1rem;
+}
+
+.shop-table-price {
+    font-weight: 600;
+    color: var(--bs-primary);
+}
+
 /* Wiki : recherche et tuiles de catégories */
 .wiki-search {
     position: relative;
