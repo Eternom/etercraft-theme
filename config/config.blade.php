@@ -8,6 +8,9 @@
     $joinSteps = array_values(old('join_steps', config('theme.join_steps') ?: trans('theme::messages.join.steps')));
     $footerLinks = array_values(old('footer_links', config('theme.footer_links') ?? []));
     $images = \Azuriom\Models\Image::all();
+    // Même règle que l'accueil : une section absente de la config (ajoutée plus tard) va à la fin
+    $sections = ['features', 'join', 'news', 'vote'];
+    $sectionOrder = array_values(array_unique(array_merge(array_intersect(old('sections', config('theme.sections') ?? []), $sections), $sections)));
 @endphp
 
 @section('content')
@@ -83,11 +86,57 @@
                             <textarea class="form-control" id="subtitleInput" name="subtitle" rows="2">{{ old('subtitle', config('theme.subtitle')) }}</textarea>
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label" for="heroLayoutSelect">{{ trans('theme::messages.config.hero_layout') }}</label>
+                            <select class="form-select" id="heroLayoutSelect" name="hero_layout">
+                                @foreach(['centered', 'cinematic', 'split'] as $layout)
+                                    <option value="{{ $layout }}" @selected(old('hero_layout', config('theme.hero_layout', 'centered')) === $layout)>{{ trans('theme::messages.config.hero_layouts.'.$layout) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">{{ trans('theme::messages.config.hero_images') }}</label>
+                            @if($images->isEmpty())
+                                <p class="text-body-secondary small mb-1">{{ trans('theme::messages.config.hero_images_none') }}</p>
+                            @else
+                                <div class="row g-2">
+                                    @foreach($images as $image)
+                                        <div class="col-6 col-md-3">
+                                            <input type="checkbox" class="btn-check" name="hero_images[]" value="{{ $image->file }}" id="heroImage{{ $image->id }}" @checked(in_array($image->file, old('hero_images', config('theme.hero_images') ?? []), true))>
+                                            <label class="btn btn-outline-primary w-100 p-1" for="heroImage{{ $image->id }}">
+                                                <img src="{{ image_url($image->file) }}" alt="" class="w-100 rounded" style="aspect-ratio: 16 / 10; object-fit: cover">
+                                                <small class="d-block text-truncate mt-1">{{ $image->name }}</small>
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                            <small class="form-text d-block mt-1">
+                                {{ trans('theme::messages.config.hero_images_info') }}
+                                <a href="{{ route('admin.images.create') }}">{{ trans('theme::messages.config.image_upload') }}</a>
+                            </small>
+                        </div>
+
                         <div class="form-check form-switch">
                             <input type="hidden" name="background_pages" value="0">
                             <input type="checkbox" class="form-check-input" id="background_pagesSwitch" name="background_pages" value="1" @checked(old('background_pages', config('theme.background_pages', true)))>
                             <label class="form-check-label" for="background_pagesSwitch">{{ trans('theme::messages.config.background_pages') }}</label>
                         </div>
+
+                        <label class="form-label mt-4">{{ trans('theme::messages.config.sections_order') }}</label>
+                        <ul class="list-group mb-1" data-sortable>
+                            @foreach($sectionOrder as $section)
+                                <li class="list-group-item d-flex align-items-center gap-2" draggable="true" data-sortable-item>
+                                    <i class="bi bi-grip-vertical text-body-secondary" style="cursor: grab"></i>
+                                    <input type="hidden" name="sections[]" value="{{ $section }}">
+                                    <span class="flex-grow-1">{{ trans('theme::messages.config.section_names.'.$section) }}</span>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-move="up"><i class="bi bi-arrow-up"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" data-move="down"><i class="bi bi-arrow-down"></i></button>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <small class="form-text">{{ trans('theme::messages.config.sections_order_info') }}</small>
                     </div>
                 </div>
 
@@ -179,6 +228,15 @@
                             <input type="text" class="form-control" id="joinTitleInput" name="join_title" value="{{ old('join_title', config('theme.join_title')) }}" placeholder="{{ trans('theme::messages.join.title') }}">
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label" for="joinLayoutSelect">{{ trans('theme::messages.config.join_layout') }}</label>
+                            <select class="form-select" id="joinLayoutSelect" name="join_layout">
+                                @foreach(['cards', 'timeline', 'split'] as $layout)
+                                    <option value="{{ $layout }}" @selected(old('join_layout', config('theme.join_layout', 'cards')) === $layout)>{{ trans('theme::messages.config.join_layouts.'.$layout) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <label class="form-label">{{ trans('theme::messages.config.join_items') }}</label>
                         <div data-repeater="join_steps" data-max="4" data-items="{{ json_encode($joinSteps) }}">
                             <div data-rows></div>
@@ -192,6 +250,12 @@
                                         <button type="button" class="btn btn-outline-danger" data-repeater-remove><i class="bi bi-x-lg"></i></button>
                                     </div>
                                     <textarea class="form-control" rows="2" data-field="text" placeholder="{{ trans('theme::messages.config.item_text') }}" required></textarea>
+                                    <select class="form-select mt-2" data-field="image">
+                                        <option value="">{{ trans('theme::messages.config.item_no_image') }}</option>
+                                        @foreach($images as $image)
+                                            <option value="{{ $image->file }}">{{ $image->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </template>
                         </div>
@@ -265,6 +329,46 @@
             const current = document.getElementById(location.hash.slice(1));
             show(current && current.matches('[data-config-tab]') ? current.id : tabs[0].id);
         })();
+
+        // Ordre des sections : glisser-déposer, ou flèches haut/bas
+        document.querySelectorAll('[data-sortable]').forEach((list) => {
+            let dragged = null;
+
+            list.addEventListener('click', (event) => {
+                const button = event.target.closest('[data-move]');
+                if (button) {
+                    const item = button.closest('[data-sortable-item]');
+                    if (button.dataset.move === 'up') {
+                        item.previousElementSibling?.before(item);
+                    } else {
+                        item.nextElementSibling?.after(item);
+                    }
+                }
+            });
+
+            list.addEventListener('dragstart', (event) => {
+                dragged = event.target.closest('[data-sortable-item]');
+                dragged.classList.add('opacity-50');
+            });
+
+            list.addEventListener('dragend', () => {
+                dragged?.classList.remove('opacity-50');
+                dragged = null;
+            });
+
+            list.addEventListener('dragover', (event) => {
+                const over = event.target.closest('[data-sortable-item]');
+                event.preventDefault();
+                if (dragged && over && over !== dragged) {
+                    const box = over.getBoundingClientRect();
+                    if (event.clientY < box.top + box.height / 2) {
+                        over.before(dragged);
+                    } else {
+                        over.after(dragged);
+                    }
+                }
+            });
+        });
 
         // Listes modifiables : chaque ligne vient du <template> de sa liste, nommée liste[index][champ]
         document.querySelectorAll('[data-repeater]').forEach((repeater) => {

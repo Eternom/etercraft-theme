@@ -5,6 +5,8 @@
  * - un bouton .copy-ip copie l'adresse du serveur et l'indique pendant 2 secondes.
  * - mosaïque : le halo des cartes [data-spotlight] suit la souris ;
  * - vitrine : survoler ou cliquer un titre [data-showcase-tab] affiche son panneau.
+ * - hero : les images [data-slideshow] défilent toutes les 7 secondes (repères .hero-dot synchronisés) ;
+ * - « Rejoindre » partagée : l'étape survolée affiche son image, si elle en a une.
  */
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('siteNavbar');
@@ -69,6 +71,38 @@ document.addEventListener('DOMContentLoaded', () => {
             ['mouseenter', 'focus', 'click'].forEach((type) => {
                 tab.addEventListener(type, () => select(tab.dataset.showcaseTab));
             });
+        });
+    });
+
+    document.querySelectorAll('[data-slideshow]').forEach((slideshow) => {
+        const slides = slideshow.querySelectorAll('.hero-slide');
+        const dots = slideshow.closest('.hero').querySelectorAll('.hero-dot');
+        let current = 0;
+
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            dots[current]?.classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+            dots[current]?.classList.add('active');
+        }, 7000);
+    });
+
+    document.querySelectorAll('[data-join-split]').forEach((split) => {
+        const steps = split.querySelectorAll('[data-join-step]');
+        const images = split.querySelectorAll('[data-join-image]');
+
+        const select = (step) => {
+            steps.forEach((other) => other.classList.toggle('active', other === step));
+            const image = split.querySelector(`[data-join-image="${step.dataset.joinStep}"]`);
+            if (image) {
+                images.forEach((other) => other.classList.toggle('active', other === image));
+            }
+        };
+
+        steps.forEach((step) => {
+            step.addEventListener('mouseenter', () => select(step));
+            step.addEventListener('focus', () => select(step));
         });
     });
 });
