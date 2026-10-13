@@ -994,15 +994,16 @@ a.glass-card:hover {
 
 .timeline-step {
     position: relative;
+    text-align: center;
 }
 
-/* Trait vers l'étape suivante, depuis le centre de la pastille */
+/* Trait vers la pastille suivante : du bord de celle-ci au bord de la suivante (colonnes séparées de 2rem) */
 .timeline-step:not(:last-child)::before {
     content: "";
     position: absolute;
     top: 1.5rem;
-    left: 3rem;
-    right: -2rem;
+    left: calc(50% + 1.5rem);
+    right: calc(-50% - .5rem);
     height: 1px;
     background: linear-gradient(90deg, rgba(var(--bs-primary-rgb), .7), rgba(var(--bs-primary-rgb), .1));
 }
@@ -1013,7 +1014,7 @@ a.glass-card:hover {
     place-items: center;
     width: 3rem;
     height: 3rem;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem;
     border-radius: 50%;
     font-family: var(--ec-display);
     font-weight: 600;
@@ -1073,6 +1074,7 @@ a.glass-card:hover {
 
     .timeline-step {
         padding-left: 4.5rem;
+        text-align: left;
     }
 
     .timeline-dot {
