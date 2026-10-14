@@ -4,7 +4,7 @@
     Chaque colonne a toujours les mêmes 6 blocs, même vides : la sous-grille CSS aligne ainsi titres, prix, boutons
     et listes d'une colonne à l'autre.
 --}}
-<div class="pricing">
+<div class="pricing" style="--plans: {{ $packages->count() }}">
     @foreach($packages as $package)
         @php($featured = $packages->count() === 3 && $loop->index === 1)
         <div class="pricing-plan @if($featured) featured @endif">

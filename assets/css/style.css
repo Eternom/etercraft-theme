@@ -2166,11 +2166,13 @@ a.glass-card:hover {
 }
 
 /* Shop : disposition « grille tarifaire », centrée quel que soit le nombre de colonnes */
+/* Les colonnes se partagent la largeur (14rem au moins) ; --plans (nombre de colonnes) borne la largeur totale */
 .pricing {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 21rem));
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
     gap: 1.25rem;
+    max-width: calc(var(--plans, 3) * 22rem);
+    margin-inline: auto;
 }
 
 /* Sous-grille : les 6 blocs de chaque colonne partagent les lignes de la grille, donc s'alignent entre colonnes */

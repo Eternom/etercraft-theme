@@ -50,7 +50,7 @@
             @endforeach
         </div>
     @elseif($layout === 'pricing')
-        <div class="pricing">
+        <div class="pricing" style="--plans: {{ $offers->count() }}">
             @foreach($offers as $offer)
                 @php($featured = $best !== null && $offer->is($best))
                 <div class="pricing-plan @if($featured) featured @endif">
