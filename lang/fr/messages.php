@@ -93,6 +93,12 @@ return [
         ],
         'shop_pricing_categories' => 'Catégories toujours en grille tarifaire',
         'shop_pricing_info' => 'Idéal pour les grades. Avec trois articles, celui du milieu est mis en avant.',
+        'wiki_layout' => 'Disposition de l\'accueil du wiki',
+        'wiki_layouts' => [
+            'tiles' => 'Tuiles : icône, nom et nombre de pages',
+            'guides' => 'Sommaires : une carte par catégorie avec ses premières pages',
+            'list' => 'Liste : une ligne par catégorie avec un aperçu de ses pages',
+        ],
     ],
     'hero' => [
         'online' => ':count joueur en ligne|:count joueurs en ligne',
@@ -166,6 +172,12 @@ return [
         'subtitle' => 'Tout ce qu\'il faut savoir, rangé par thème.',
         'see_all' => 'Ouvrir le wiki',
         'search' => 'Rechercher un guide…',
+        'pages' => ':count page|:count pages',
+        'more' => 'Et :count autre|Et :count autres',
+        'in_category' => 'Dans cette catégorie',
+        'categories' => 'Catégories',
+        'previous' => 'Précédent',
+        'next' => 'Suivant',
     ],
     'forum' => [
         'title' => 'Sur le forum',

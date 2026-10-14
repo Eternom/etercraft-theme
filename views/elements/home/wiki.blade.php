@@ -3,7 +3,8 @@
     @php
         $categories = \Azuriom\Plugin\Wiki\Models\Category::scopes(['parents', 'enabled'])
             ->get()
-            ->filter(fn ($category) => Gate::allows('view', $category));
+            ->filter(fn ($category) => Gate::allows('view', $category))
+            ->loadCount('pages');
     @endphp
 
     @unless($categories->isEmpty())
@@ -15,10 +16,10 @@
                         <h2>{{ config('theme.wiki_title') ?: trans('theme::messages.wiki.title') }}</h2>
                         <p>{{ trans('theme::messages.wiki.subtitle') }}</p>
                     </div>
-                    @include('elements.wiki-search')
+                    @include('elements.wiki.search')
                 </div>
 
-                @include('elements.wiki-tiles', ['categories' => $categories])
+                @include('elements.wiki.tiles', ['categories' => $categories])
             </div>
         </section>
     @endunless

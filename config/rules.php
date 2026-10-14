@@ -48,6 +48,7 @@ return [
     'shop_pricing_categories.*' => ['integer'],
     'show_wiki' => ['boolean'],
     'wiki_title' => ['nullable', 'string', 'max:80'],
+    'wiki_layout' => ['nullable', 'in:tiles,guides,list'],
     'show_forum' => ['boolean'],
     'forum_title' => ['nullable', 'string', 'max:80'],
     'forum_count' => ['nullable', 'integer', 'between:1,10'],

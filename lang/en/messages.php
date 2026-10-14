@@ -93,6 +93,12 @@ return [
         ],
         'shop_pricing_categories' => 'Categories always shown as a pricing table',
         'shop_pricing_info' => 'Ideal for ranks. With three packages, the middle one is highlighted.',
+        'wiki_layout' => 'Wiki home layout',
+        'wiki_layouts' => [
+            'tiles' => 'Tiles: icon, name and page count',
+            'guides' => 'Contents: one card per category with its first pages',
+            'list' => 'List: one row per category with a preview of its pages',
+        ],
     ],
     'hero' => [
         'online' => ':count player online|:count players online',
@@ -166,6 +172,12 @@ return [
         'subtitle' => 'Everything you need to know, sorted by topic.',
         'see_all' => 'Open the wiki',
         'search' => 'Search a guide…',
+        'pages' => ':count page|:count pages',
+        'more' => 'And :count more|And :count more',
+        'in_category' => 'In this category',
+        'categories' => 'Categories',
+        'previous' => 'Previous',
+        'next' => 'Next',
     ],
     'forum' => [
         'title' => 'On the forum',

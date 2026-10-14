@@ -324,6 +324,15 @@
                                     </div>
                                 @endforeach
                                 <small class="form-text">{{ trans('theme::messages.config.shop_pricing_info') }}</small>
+                            @elseif($plugin === 'wiki')
+                                {{-- Accueil du wiki (/wiki) : disposition des catégories --}}
+                                <hr class="my-4">
+                                <label class="form-label" for="wikiLayoutSelect">{{ trans('theme::messages.config.wiki_layout') }}</label>
+                                <select class="form-select" id="wikiLayoutSelect" name="wiki_layout">
+                                    @foreach(['tiles', 'guides', 'list'] as $layout)
+                                        <option value="{{ $layout }}" @selected(old('wiki_layout', config('theme.wiki_layout', 'tiles')) === $layout)>{{ trans('theme::messages.config.wiki_layouts.'.$layout) }}</option>
+                                    @endforeach
+                                </select>
                             @endif
                         </div>
                     </div>

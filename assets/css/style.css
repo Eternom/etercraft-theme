@@ -2312,15 +2312,31 @@ a.glass-card:hover {
     box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .15);
 }
 
+/* Pastille d'icône commune aux dispositions du wiki */
+.wiki-icon {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.3rem;
+    color: var(--bs-primary);
+    border-radius: .8rem;
+    border: 1px solid rgba(var(--bs-primary-rgb), .25);
+    background: rgba(var(--bs-primary-rgb), .1);
+    transition: background-color .4s var(--tc-ease), color .4s var(--tc-ease);
+}
+
+/* Disposition « tuiles » (aussi sur l'accueil) */
 .wiki-tile {
     position: relative;
     isolation: isolate;
     overflow: hidden;
     display: flex;
     align-items: center;
-    gap: .9rem;
+    gap: 1rem;
     height: 100%;
-    padding: 1.25rem 1.4rem;
+    padding: 1.1rem 1.25rem;
     color: var(--bs-emphasis-color);
     border-radius: 1.1rem;
     border: 1px solid var(--tc-glass-border);
@@ -2329,7 +2345,8 @@ a.glass-card:hover {
 }
 
 /* Même halo que la mosaïque, piloté par [data-spotlight] */
-.wiki-tile::before {
+.wiki-tile::before,
+.wiki-guide::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -2345,18 +2362,37 @@ a.glass-card:hover {
     border-color: rgba(var(--bs-primary-rgb), .35);
 }
 
-.wiki-tile:hover::before {
+.wiki-tile:hover::before,
+.wiki-guide:hover::before {
     opacity: 1;
 }
 
-.wiki-tile > .bi:first-child {
-    font-size: 1.5rem;
-    color: var(--bs-primary);
+.wiki-tile:hover .wiki-icon,
+.wiki-list-row:hover .wiki-icon,
+.wiki-guide-head:hover .wiki-icon {
+    color: #fff;
+    background: var(--bs-primary);
 }
 
-.wiki-tile span {
+.wiki-tile-text {
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.wiki-tile-name,
+.wiki-guide-name,
+.wiki-list-name {
     font-weight: 600;
+    color: var(--bs-emphasis-color);
+}
+
+.wiki-tile small,
+.wiki-guide-head small,
+.wiki-list-count {
+    font-size: .85rem;
+    color: var(--bs-secondary-color);
 }
 
 .wiki-tile-arrow {
@@ -2365,34 +2401,344 @@ a.glass-card:hover {
     transition: opacity .3s var(--tc-ease), transform .4s var(--tc-ease);
 }
 
-.wiki-tile:hover .wiki-tile-arrow {
+.wiki-tile:hover .wiki-tile-arrow,
+.wiki-list-row:hover .wiki-tile-arrow {
     opacity: 1;
     transform: none;
 }
 
-/* Contenu des pages du wiki : lecture confortable */
-#wiki .tab-pane .card-body {
-    padding: clamp(1.5rem, 3vw, 2.5rem);
-    line-height: 1.75;
+/* Disposition « sommaires » : une carte par catégorie avec ses premières pages */
+.wiki-guides {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+    gap: 1.25rem;
+}
+
+.wiki-guide {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem;
+    border-radius: 1.1rem;
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
+    transition: border-color .4s var(--tc-ease);
+}
+
+.wiki-guide:hover {
+    border-color: rgba(var(--bs-primary-rgb), .35);
+}
+
+.wiki-guide-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: .75rem;
+    border-bottom: 1px solid var(--tc-glass-border);
+}
+
+.wiki-guide-head > span:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.wiki-guide-name {
+    font-size: 1.1rem;
+}
+
+.wiki-guide-pages {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: wiki-page;
+}
+
+.wiki-guide-pages li {
+    counter-increment: wiki-page;
+}
+
+.wiki-guide-pages a {
+    display: flex;
+    gap: .75rem;
+    padding: .35rem 0;
+    color: var(--bs-body-color);
+    transition: color .3s var(--tc-ease), transform .3s var(--tc-ease);
+}
+
+.wiki-guide-pages a::before {
+    content: counter(wiki-page, decimal-leading-zero);
+    font-size: .8rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.9;
+    color: var(--bs-secondary-color);
+}
+
+.wiki-guide-pages a:hover {
+    color: var(--bs-primary);
+    transform: translateX(3px);
+}
+
+.wiki-guide-more {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin-top: .75rem;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+/* Disposition « liste » : une ligne par catégorie */
+.wiki-list {
+    overflow: hidden;
+    border-radius: 1.1rem;
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
+}
+
+.wiki-list-row {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1rem 1.4rem;
+    color: inherit;
+    border-bottom: 1px solid var(--tc-glass-border);
+    transition: background-color .3s var(--tc-ease);
+}
+
+.wiki-list-row:last-child {
+    border-bottom: 0;
+}
+
+.wiki-list-row:hover {
+    color: inherit;
+    background: rgba(var(--bs-primary-rgb), .06);
+}
+
+.wiki-list-text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.wiki-list-pages {
+    overflow: hidden;
+    font-size: .9rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--bs-secondary-color);
+}
+
+.wiki-list-count {
+    white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+    .wiki-list-count {
+        display: none;
+    }
+}
+
+/* Page du wiki : fil d'Ariane, sommaire latéral, article */
+.wiki-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .75rem;
+    font-size: .9rem;
+    color: var(--bs-secondary-color);
+}
+
+.wiki-breadcrumb .bi {
+    font-size: .7rem;
+}
+
+.wiki-breadcrumb a {
+    color: inherit;
+}
+
+.wiki-breadcrumb a:hover {
+    color: var(--bs-primary);
+}
+
+#wiki {
+    scroll-margin-top: 6.5rem;
+}
+
+@media (min-width: 992px) {
+    .wiki-aside {
+        position: sticky;
+        top: 6.5rem;
+    }
+}
+
+.wiki-aside-block {
+    margin-bottom: 1.5rem;
+}
+
+.wiki-aside-label {
+    display: block;
+    margin: 0 0 .6rem .9rem;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--bs-secondary-color);
+}
+
+.wiki-toc {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+}
+
+.wiki-toc-link {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    padding: .55rem .9rem;
+    color: var(--bs-body-color);
+    border-radius: .7rem;
+    border-left: 2px solid transparent;
+    transition: color .3s var(--tc-ease), background-color .3s var(--tc-ease);
+}
+
+.wiki-toc-link:hover {
+    color: var(--bs-emphasis-color);
+    background: rgba(255, 255, 255, .04);
+}
+
+.wiki-toc-link.active {
+    color: var(--bs-primary);
+    background: rgba(var(--bs-primary-rgb), .1);
+    border-left-color: var(--bs-primary);
+    border-radius: 0 .7rem .7rem 0;
+}
+
+.wiki-toc-number {
+    min-width: 1.1rem;
+    font-size: .8rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--bs-secondary-color);
+}
+
+.wiki-toc-link.active .wiki-toc-number {
+    color: inherit;
+}
+
+/* Autres catégories : une rangée d'icônes, le nom au survol */
+.wiki-jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    padding-left: .9rem;
+}
+
+.wiki-jump a {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    color: var(--bs-secondary-color);
+    border-radius: .7rem;
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
+    transition: color .3s var(--tc-ease), border-color .3s var(--tc-ease);
+}
+
+.wiki-jump a:hover,
+.wiki-jump a.active {
+    color: var(--bs-primary);
+    border-color: rgba(var(--bs-primary-rgb), .4);
+}
+
+.wiki-back {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin-left: .9rem;
+    font-size: .9rem;
+    color: var(--bs-secondary-color);
+}
+
+.wiki-back:hover {
+    color: var(--bs-primary);
+}
+
+.wiki-article .card-body {
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.wiki-article-head {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--tc-glass-border);
+}
+
+.wiki-article-title {
+    margin: .4rem 0 0;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+/* Précédent / suivant en bas de l'article */
+.wiki-pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--tc-glass-border);
+}
+
+.wiki-pager a {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    padding: 1.1rem clamp(1.5rem, 3vw, 2.75rem);
+    color: var(--bs-emphasis-color);
+    transition: background-color .3s var(--tc-ease);
+}
+
+.wiki-pager a:hover {
+    background: rgba(var(--bs-primary-rgb), .06);
+}
+
+.wiki-pager small {
+    color: var(--bs-secondary-color);
+}
+
+.wiki-pager span {
+    font-weight: 600;
+}
+
+.wiki-pager-next {
+    grid-column: 2;
+    text-align: right;
+    border-left: 1px solid var(--tc-glass-border);
 }
 
 /* Contenu écrit en Markdown ou dans l'éditeur (tableaux sans classe Bootstrap) : titres, tableaux, code, citations */
-#wiki .tab-pane h2 {
-    font-size: 1.5rem;
-    margin: 2rem 0 .75rem;
+.wiki-content {
+    line-height: 1.75;
 }
 
-#wiki .tab-pane h2:first-child,
-#wiki .tab-pane h3:first-child {
-    margin-top: 0;
+.wiki-content h2 {
+    font-size: 1.4rem;
+    margin: 2.25rem 0 .75rem;
 }
 
-#wiki .tab-pane h3 {
-    font-size: 1.2rem;
+.wiki-content h3 {
+    font-size: 1.15rem;
     margin: 1.5rem 0 .5rem;
 }
 
-#wiki .tab-pane table {
+.wiki-content > :first-child {
+    margin-top: 0;
+}
+
+.wiki-content table {
     width: 100%;
     margin: 1rem 0 1.5rem;
     border-collapse: separate;
@@ -2404,36 +2750,45 @@ a.glass-card:hover {
     line-height: 1.5;
 }
 
-#wiki .tab-pane th,
-#wiki .tab-pane td {
+.wiki-content th,
+.wiki-content td {
     padding: .65rem .9rem;
     vertical-align: top;
     border-bottom: 1px solid var(--tc-glass-border);
 }
 
-#wiki .tab-pane tr:last-child td {
+.wiki-content tr:last-child td {
     border-bottom: 0;
 }
 
-#wiki .tab-pane th {
+.wiki-content th {
     text-align: left;
     color: var(--bs-emphasis-color);
     background: rgba(var(--bs-primary-rgb), .08);
 }
 
-#wiki .tab-pane tbody tr:hover {
+/* Tableau à deux colonnes sans en-tête (Markdown « | | | ») : pas de bandeau vide, première colonne en libellé */
+.wiki-content thead:not(:has(th:not(:empty))) {
+    display: none;
+}
+
+.wiki-content table:has(thead th:empty) td:first-child {
+    color: var(--bs-secondary-color);
+}
+
+.wiki-content tbody tr:hover {
     background: rgba(255, 255, 255, .02);
 }
 
 /* Sur téléphone, un tableau large défile sur le côté au lieu de déborder */
 @media (max-width: 575.98px) {
-    #wiki .tab-pane table {
+    .wiki-content table {
         display: block;
         overflow-x: auto;
     }
 }
 
-#wiki .tab-pane code {
+.wiki-content code {
     padding: .1rem .4rem;
     font-size: .875em;
     color: var(--bs-primary);
@@ -2441,7 +2796,7 @@ a.glass-card:hover {
     background: rgba(var(--bs-primary-rgb), .1);
 }
 
-#wiki .tab-pane blockquote {
+.wiki-content blockquote {
     margin: 1rem 0;
     padding: .75rem 1.1rem;
     color: var(--bs-secondary-color);
