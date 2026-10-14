@@ -2719,26 +2719,26 @@ a.glass-card:hover {
     border-left: 1px solid var(--tc-glass-border);
 }
 
-/* Contenu écrit en Markdown ou dans l'éditeur (tableaux sans classe Bootstrap) : titres, tableaux, code, citations */
-.wiki-content {
+/* Texte riche du wiki et des messages du forum (Markdown ou éditeur, sans classes Bootstrap) : titres, tableaux, code, citations */
+.rich-content {
     line-height: 1.75;
 }
 
-.wiki-content h2 {
+.rich-content h2 {
     font-size: 1.4rem;
     margin: 2.25rem 0 .75rem;
 }
 
-.wiki-content h3 {
+.rich-content h3 {
     font-size: 1.15rem;
     margin: 1.5rem 0 .5rem;
 }
 
-.wiki-content > :first-child {
+.rich-content > :first-child {
     margin-top: 0;
 }
 
-.wiki-content table {
+.rich-content table {
     width: 100%;
     margin: 1rem 0 1.5rem;
     border-collapse: separate;
@@ -2750,45 +2750,45 @@ a.glass-card:hover {
     line-height: 1.5;
 }
 
-.wiki-content th,
-.wiki-content td {
+.rich-content th,
+.rich-content td {
     padding: .65rem .9rem;
     vertical-align: top;
     border-bottom: 1px solid var(--tc-glass-border);
 }
 
-.wiki-content tr:last-child td {
+.rich-content tr:last-child td {
     border-bottom: 0;
 }
 
-.wiki-content th {
+.rich-content th {
     text-align: left;
     color: var(--bs-emphasis-color);
     background: rgba(var(--bs-primary-rgb), .08);
 }
 
 /* Tableau à deux colonnes sans en-tête (Markdown « | | | ») : pas de bandeau vide, première colonne en libellé */
-.wiki-content thead:not(:has(th:not(:empty))) {
+.rich-content thead:not(:has(th:not(:empty))) {
     display: none;
 }
 
-.wiki-content table:has(thead th:empty) td:first-child {
+.rich-content table:has(thead th:empty) td:first-child {
     color: var(--bs-secondary-color);
 }
 
-.wiki-content tbody tr:hover {
+.rich-content tbody tr:hover {
     background: rgba(255, 255, 255, .02);
 }
 
 /* Sur téléphone, un tableau large défile sur le côté au lieu de déborder */
 @media (max-width: 575.98px) {
-    .wiki-content table {
+    .rich-content table {
         display: block;
         overflow-x: auto;
     }
 }
 
-.wiki-content code {
+.rich-content code {
     padding: .1rem .4rem;
     font-size: .875em;
     color: var(--bs-primary);
@@ -2796,7 +2796,22 @@ a.glass-card:hover {
     background: rgba(var(--bs-primary-rgb), .1);
 }
 
-.wiki-content blockquote {
+/* Bloc de code (modèles à copier) : encadré sobre, texte courant */
+.rich-content pre {
+    margin: 1rem 0 1.5rem;
+    padding: 1rem 1.2rem;
+    border-radius: .9rem;
+    border: 1px solid var(--tc-glass-border);
+    background: rgba(0, 0, 0, .25);
+}
+
+.rich-content pre code {
+    padding: 0;
+    color: var(--bs-body-color);
+    background: none;
+}
+
+.rich-content blockquote {
     margin: 1rem 0;
     padding: .75rem 1.1rem;
     color: var(--bs-secondary-color);

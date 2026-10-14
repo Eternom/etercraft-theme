@@ -84,7 +84,7 @@
             <div class="forum-post-main">
                 <time class="forum-post-date" datetime="{{ $post->created_at->toIso8601String() }}">{{ format_date($post->created_at, true) }}</time>
 
-                <div class="markdown-body">
+                <div class="markdown-body rich-content">
                     {{ $post->parseContent() }}
 
                     @if($post->author->signature !== null)

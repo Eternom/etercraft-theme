@@ -93,7 +93,7 @@
                                 <h2 class="wiki-article-title">{{ $catPage->title }}</h2>
                             </header>
 
-                            <div class="wiki-content">
+                            <div class="rich-content">
                                 {!! $catPage->content !!}
                             </div>
                         </div>
