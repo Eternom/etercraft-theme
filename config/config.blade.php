@@ -302,6 +302,29 @@
                                     </div>
                                 @endisset
                             </div>
+
+                            @if($plugin === 'shop')
+                                {{-- Pages de catégorie de la boutique : disposition générale, et catégories en grille tarifaire --}}
+                                <hr class="my-4">
+                                <div class="mb-3">
+                                    <label class="form-label" for="shopLayoutSelect">{{ trans('theme::messages.config.shop_layout') }}</label>
+                                    <select class="form-select" id="shopLayoutSelect" name="shop_layout">
+                                        @foreach(['cards', 'list', 'pricing'] as $layout)
+                                            <option value="{{ $layout }}" @selected(old('shop_layout', config('theme.shop_layout', 'cards')) === $layout)>{{ trans('theme::messages.config.shop_layouts.'.$layout) }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <label class="form-label">{{ trans('theme::messages.config.shop_pricing_categories') }}</label>
+                                @foreach(\Azuriom\Plugin\Shop\Models\Category::orderBy('position')->get() as $shopCategory)
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="shopPricing{{ $shopCategory->id }}" name="shop_pricing_categories[]" value="{{ $shopCategory->id }}"
+                                               @checked(in_array($shopCategory->id, old('shop_pricing_categories', config('theme.shop_pricing_categories') ?? [])))>
+                                        <label class="form-check-label" for="shopPricing{{ $shopCategory->id }}">{{ $shopCategory->name }}</label>
+                                    </div>
+                                @endforeach
+                                <small class="form-text">{{ trans('theme::messages.config.shop_pricing_info') }}</small>
+                            @endif
                         </div>
                     </div>
                 @endforeach

@@ -8,12 +8,16 @@
         @endif
     </div>
     <div class="package-body">
-        <h3>{{ $package->name }}</h3>
-        <span class="package-price">
-            @if($package->isDiscounted())
-                <del>{{ shop_format_amount($package->getOriginalPrice()) }}</del>
+        <div>
+            <h3>{{ $package->name }}</h3>
+            @if($package->short_description)
+                <p class="package-short">{{ $package->short_description }}</p>
             @endif
-            {{ shop_format_amount($package->getPrice()) }}
-        </span>
+            @include('elements.packages.badges', ['package' => $package])
+        </div>
+        <div class="package-foot">
+            @include('elements.packages.price', ['package' => $package])
+            <span class="package-cta">{{ trans('theme::messages.shop.see') }} <i class="bi bi-arrow-right"></i></span>
+        </div>
     </div>
 </a>

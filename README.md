@@ -16,7 +16,7 @@ Tout se règle depuis l'administration, sans toucher au code.
   | Plugin | Section d'accueil | Page habillée |
   |---|---|---|
   | Vote | Podium des meilleurs voteurs du mois | Sites de vote, podium, objectif, récompenses |
-  | Shop | Articles mis en avant | Toutes les pages (paiement PayPal : style du thème seulement) |
+  | Shop | Articles mis en avant | Toutes les pages, en cartes, liste ou grille tarifaire (paiement PayPal : style seulement) |
   | Wiki | Catégories et recherche | Accueil du wiki et en-tête des pages |
   | Forum | Discussions récentes (ou invitation à lancer la première) | Accueil, forums, discussions, fil d'Ariane |
 

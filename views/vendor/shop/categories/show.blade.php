@@ -1,5 +1,5 @@
 {{--
-    Catégorie de la boutique, habillée par le thème (remplace shop::categories.show).
+    Catégorie de la boutique, habillée par le thème (remplace shop::categories.show), en cartes, liste ou grille tarifaire.
     Un clic sur un article charge sa fenêtre d'achat depuis le plugin ([data-package-url] → #itemModal).
 --}}
 @extends('layouts.app')
@@ -39,19 +39,19 @@
                 </div>
             @endif
 
-            <div class="row g-4">
-                @forelse($category->packages as $package)
-                    <div class="col-sm-6 col-xl-4">
-                        @include('elements.package-card', ['package' => $package])
-                    </div>
-                @empty
-                    <div class="col">
-                        <p class="text-body-secondary">
-                            <i class="bi bi-exclamation-circle"></i> {{ trans('shop::messages.categories.empty') }}
-                        </p>
-                    </div>
-                @endforelse
-            </div>
+            @if($category->packages->isEmpty())
+                <p class="text-body-secondary">
+                    <i class="bi bi-exclamation-circle"></i> {{ trans('shop::messages.categories.empty') }}
+                </p>
+            @else
+                {{-- Disposition : grille tarifaire pour les catégories choisies, sinon celle de la config du thème --}}
+                @php
+                    $layout = in_array($category->id, config('theme.shop_pricing_categories') ?? [])
+                        ? 'pricing'
+                        : (in_array(config('theme.shop_layout'), ['list', 'pricing'], true) ? config('theme.shop_layout') : 'cards');
+                @endphp
+                @include('elements.packages.'.$layout, ['packages' => $category->packages])
+            @endif
         </div>
     </div>
 

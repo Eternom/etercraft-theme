@@ -2019,6 +2019,259 @@ a.glass-card:hover {
     color: var(--bs-primary);
 }
 
+/* Shop : détails d'un article (description courte, étiquettes, prix et période) */
+.package-short {
+    margin: .35rem 0 0;
+    font-size: .9rem;
+    color: var(--bs-secondary-color);
+}
+
+.package-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    margin-top: .75rem;
+}
+
+.package-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .2rem .55rem;
+    font-size: .75rem;
+    font-weight: 500;
+    border-radius: 999px;
+    color: var(--bs-secondary-color);
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid var(--tc-glass-border);
+}
+
+.package-badge.accent {
+    color: var(--bs-primary);
+    background: rgba(var(--bs-primary-rgb), .1);
+    border-color: rgba(var(--bs-primary-rgb), .3);
+}
+
+.package-badge.success {
+    color: #4ade80;
+    background: rgba(74, 222, 128, .08);
+    border-color: rgba(74, 222, 128, .3);
+}
+
+.package-period {
+    font-family: var(--bs-body-font-family);
+    font-size: .8rem;
+    font-weight: 400;
+    color: var(--bs-secondary-color);
+}
+
+.package-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+}
+
+.package-cta {
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--bs-secondary-color);
+    transition: color .3s var(--tc-ease);
+}
+
+.package-card:hover .package-cta {
+    color: var(--bs-primary);
+}
+
+.package-card.featured {
+    border-color: rgba(var(--bs-primary-rgb), .5);
+    box-shadow: 0 1.5rem 4rem -2rem rgba(var(--bs-primary-rgb), .5);
+}
+
+/* Shop : disposition « liste » */
+.package-list {
+    display: grid;
+    gap: .75rem;
+}
+
+.package-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem 1.25rem;
+    color: inherit;
+    border-radius: 1.1rem;
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
+    transition: border-color .4s var(--tc-ease), background-color .4s var(--tc-ease);
+}
+
+.package-row:hover {
+    color: inherit;
+    border-color: rgba(var(--bs-primary-rgb), .4);
+    background: rgba(var(--bs-primary-rgb), .04);
+}
+
+.package-row-image {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+    border-radius: .9rem;
+    background: radial-gradient(circle, rgba(var(--bs-primary-rgb), .18), transparent 70%);
+}
+
+.package-row-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.package-row-image .bi {
+    font-size: 1.6rem;
+    color: rgba(var(--bs-primary-rgb), .75);
+}
+
+.package-row-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.package-row-name {
+    display: block;
+    font-family: var(--tc-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.package-row .package-short {
+    display: block;
+}
+
+.package-row .package-price {
+    flex-shrink: 0;
+    text-align: right;
+}
+
+@media (max-width: 575.98px) {
+    .package-row {
+        flex-wrap: wrap;
+    }
+
+    .package-row-body {
+        flex-basis: calc(100% - 5.25rem);
+    }
+}
+
+/* Shop : disposition « grille tarifaire », centrée quel que soit le nombre de colonnes */
+.pricing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1.25rem;
+}
+
+.pricing-plan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1 1 15rem;
+    max-width: 21rem;
+    padding: 2rem 1.75rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--tc-glass-border);
+    background: var(--tc-glass);
+}
+
+.pricing-plan h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.pricing-plan .package-short {
+    margin: -.5rem 0 0;
+}
+
+.pricing-plan.featured {
+    border-color: rgba(var(--bs-primary-rgb), .55);
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(var(--bs-primary-rgb), .18), transparent 60%),
+        var(--tc-glass);
+    box-shadow: 0 2rem 5rem -2.5rem rgba(var(--bs-primary-rgb), .6);
+}
+
+@media (min-width: 992px) {
+    .pricing-plan.featured {
+        transform: translateY(-.75rem);
+    }
+}
+
+.pricing-flag {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: .25rem .8rem;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0c0a09;
+    border-radius: 999px;
+    background: var(--bs-primary);
+}
+
+.pricing-price .package-price {
+    font-size: 2.1rem;
+}
+
+.pricing-price .package-period {
+    font-size: .95rem;
+}
+
+/* Description saisie dans l'admin : les puces deviennent des coches */
+.pricing-features {
+    flex: 1;
+    padding-top: 1rem;
+    font-size: .925rem;
+    color: var(--bs-secondary-color);
+    border-top: 1px solid var(--tc-glass-border);
+}
+
+.pricing-features ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pricing-features li {
+    position: relative;
+    padding: .3rem 0 .3rem 1.6rem;
+}
+
+.pricing-features li::before {
+    content: "\F26E";
+    position: absolute;
+    left: 0;
+    top: .3rem;
+    font-family: "bootstrap-icons";
+    color: var(--bs-primary);
+}
+
+.pricing-features b,
+.pricing-features strong {
+    color: var(--bs-emphasis-color);
+}
+
+.pricing-features > :last-child {
+    margin-bottom: 0;
+}
+
 /* Wiki : recherche et tuiles de catégories */
 .wiki-search {
     position: relative;
