@@ -1689,7 +1689,8 @@ a.glass-card:hover {
     padding: 1.25rem;
 }
 
-.shop-account .min-w-0 {
+/* Laisse un bloc flex rétrécir sous la largeur de son texte (sinon un titre long déborde de sa carte) */
+.min-w-0 {
     min-width: 0;
 }
 
@@ -1728,6 +1729,7 @@ a.glass-card:hover {
 }
 
 .shop-recent img {
+    flex-shrink: 0;
     border-radius: .5rem;
     image-rendering: pixelated;
 }
@@ -3027,11 +3029,13 @@ a.glass-card:hover {
     color: var(--bs-secondary-color);
 }
 
+/* Titre long : deux lignes au plus, puis « … » */
 .forum-latest-title {
-    display: block;
+    display: -webkit-box;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
 }
 
 .forum-online {
