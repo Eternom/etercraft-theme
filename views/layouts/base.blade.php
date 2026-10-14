@@ -26,7 +26,9 @@
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('vendor/axios/axios.min.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}" defer></script>
-    <script src="{{ theme_asset('js/theme.js') }}" defer></script>
+    {{-- Version du thème dans l'adresse : après une mise à jour, le navigateur recharge le CSS et le JS au lieu du cache --}}
+    @php($assetVersion = themes()->findDescription(themes()->currentTheme())?->version)
+    <script src="{{ theme_asset('js/theme.js') }}?v={{ $assetVersion }}" defer></script>
     @stack('scripts')
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -34,7 +36,7 @@
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/base.css') }}" rel="stylesheet">
-    <link href="{{ theme_asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ theme_asset('css/style.css') }}?v={{ $assetVersion }}" rel="stylesheet">
     @stack('styles')
     @include('elements.theme-color', ['color' => config('theme.color', '#FF7A00')])
 </head>
