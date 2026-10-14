@@ -2376,6 +2376,80 @@ a.glass-card:hover {
     line-height: 1.75;
 }
 
+/* Contenu écrit en Markdown ou dans l'éditeur (tableaux sans classe Bootstrap) : titres, tableaux, code, citations */
+#wiki .tab-pane h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 .75rem;
+}
+
+#wiki .tab-pane h2:first-child,
+#wiki .tab-pane h3:first-child {
+    margin-top: 0;
+}
+
+#wiki .tab-pane h3 {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 .5rem;
+}
+
+#wiki .tab-pane table {
+    width: 100%;
+    margin: 1rem 0 1.5rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--tc-glass-border);
+    border-radius: .9rem;
+    overflow: hidden;
+    font-size: .95rem;
+    line-height: 1.5;
+}
+
+#wiki .tab-pane th,
+#wiki .tab-pane td {
+    padding: .65rem .9rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--tc-glass-border);
+}
+
+#wiki .tab-pane tr:last-child td {
+    border-bottom: 0;
+}
+
+#wiki .tab-pane th {
+    text-align: left;
+    color: var(--bs-emphasis-color);
+    background: rgba(var(--bs-primary-rgb), .08);
+}
+
+#wiki .tab-pane tbody tr:hover {
+    background: rgba(255, 255, 255, .02);
+}
+
+/* Sur téléphone, un tableau large défile sur le côté au lieu de déborder */
+@media (max-width: 575.98px) {
+    #wiki .tab-pane table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+#wiki .tab-pane code {
+    padding: .1rem .4rem;
+    font-size: .875em;
+    color: var(--bs-primary);
+    border-radius: .4rem;
+    background: rgba(var(--bs-primary-rgb), .1);
+}
+
+#wiki .tab-pane blockquote {
+    margin: 1rem 0;
+    padding: .75rem 1.1rem;
+    color: var(--bs-secondary-color);
+    border-left: 3px solid var(--bs-primary);
+    background: rgba(255, 255, 255, .03);
+    border-radius: 0 .6rem .6rem 0;
+}
+
 /* Forum : fil des discussions récentes sur l'accueil */
 .forum-feed {
     border-bottom: 1px solid var(--tc-glass-border);
