@@ -57,14 +57,19 @@
                     @if($featured)
                         <span class="pricing-flag">{{ trans('theme::messages.shop.best_value') }}</span>
                     @endif
+                    {{-- Mêmes 6 blocs que la grille des articles (voir elements.packages.pricing), même vides --}}
                     <h3>{{ $offer->name }}</h3>
+                    <div class="package-short">
+                        @if($bonus($offer) > 0)
+                            <span class="package-badge accent"><i class="bi bi-gift-fill"></i> {{ trans('theme::messages.shop.bonus', ['percent' => $bonus($offer)]) }}</span>
+                        @endif
+                    </div>
                     <div class="pricing-price"><span class="package-price">{{ $offer->price }} {{ currency_display() }}</span></div>
                     <a href="{{ route('shop.offers.pay', [$offer->id, $gateway->type]) }}" class="payment-method btn w-100 {{ $featured ? 'btn-primary btn-glow' : 'btn-glass' }}">
                         {{ trans('theme::messages.shop.recharge') }}
                     </a>
-                    @if($bonus($offer) > 0)
-                        <div class="package-badges"><span class="package-badge accent"><i class="bi bi-gift-fill"></i> {{ trans('theme::messages.shop.bonus', ['percent' => $bonus($offer)]) }}</span></div>
-                    @endif
+                    <div class="pricing-features"></div>
+                    <div class="pricing-badges"></div>
                 </div>
             @endforeach
         </div>

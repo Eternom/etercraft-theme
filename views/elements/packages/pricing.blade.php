@@ -1,6 +1,8 @@
 {{--
     Articles d'une catégorie, disposition « grille tarifaire » : une colonne par article avec sa description complète.
     Avec trois articles, celui du milieu est mis en avant (« Recommandé »).
+    Chaque colonne a toujours les mêmes 6 blocs, même vides : la sous-grille CSS aligne ainsi titres, prix, boutons
+    et listes d'une colonne à l'autre.
 --}}
 <div class="pricing">
     @foreach($packages as $package)
@@ -11,9 +13,7 @@
             @endif
 
             <h3>{{ $package->name }}</h3>
-            @if($package->short_description)
-                <p class="package-short">{{ $package->short_description }}</p>
-            @endif
+            <p class="package-short">{{ $package->short_description }}</p>
 
             <div class="pricing-price">
                 @include('elements.packages.price', ['package' => $package])
@@ -26,7 +26,9 @@
             {{-- Description de l'article (HTML saisi dans l'admin de la boutique) --}}
             <div class="pricing-features">{!! $package->description !!}</div>
 
-            @include('elements.packages.badges', ['package' => $package])
+            <div class="pricing-badges">
+                @include('elements.packages.badges', ['package' => $package])
+            </div>
         </div>
     @endforeach
 </div>
